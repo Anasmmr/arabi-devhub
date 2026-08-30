@@ -41,7 +41,7 @@ function AuthPage() {
     setBusy(true);
     try {
       if (mode === "signup") {
-        const { error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email,
           password,
           options: {
@@ -50,7 +50,13 @@ function AuthPage() {
           },
         });
         if (error) throw error;
-        toast.success("تم إنشاء الحساب — تحقّق من بريدك لتأكيد التسجيل.");
+        if (data.session) {
+          toast.success("تم إنشاء الحساب — أهلاً بك!");
+          navigate({ to: "/profile" });
+        } else {
+          toast.success("تم إنشاء الحساب — تحقّق من بريدك لتأكيد التسجيل.");
+        }
+
 
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -125,7 +131,7 @@ function AuthPage() {
                     dir="ltr"
                     inputMode="tel"
                     placeholder="+9665XXXXXXXX"
-                    pattern="^\+?[\d\s-]{8,20}$"
+                    pattern="^\+?[0-9\s\-]{8,20}$"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     className="mt-1.5 w-full rounded-xl border border-glass-border bg-background/60 px-4 py-3 text-sm text-foreground outline-none focus:border-primary"
