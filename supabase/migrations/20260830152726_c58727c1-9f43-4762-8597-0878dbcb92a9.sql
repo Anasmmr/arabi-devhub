@@ -1,0 +1,1 @@
+REVOKE ALL ON FUNCTION public.set_user_role(uuid, public.app_role, boolean) FROM anon;
