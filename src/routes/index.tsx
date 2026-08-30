@@ -187,19 +187,7 @@ function Home() {
         </div>
       </Section>
 
-      {/* 3. Club social accounts */}
-      <Section>
-        <SectionHead
-          eyebrow="حسابات النادي"
-          title="تابعنا وانضم للنقاش"
-          subtitle="كل الإعلانات والورش والفرص تُنشر أولًا على قنوات النادي. الروابط الحالية مؤقتة."
-        />
-        <div className="mt-8">
-          <SocialGrid />
-        </div>
-      </Section>
-
-      {/* 4. Departments */}
+      {/* 3. Departments */}
       <Section>
         <SectionHead
           eyebrow="الأقسام"
@@ -249,6 +237,18 @@ function Home() {
               </article>
             );
           })}
+        </div>
+      </Section>
+
+      {/* 4. Club social accounts */}
+      <Section>
+        <SectionHead
+          eyebrow="حسابات النادي"
+          title="تابعنا وانضم للنقاش"
+          subtitle="كل الإعلانات والورش والفرص تُنشر أولًا على قنوات النادي. الروابط الحالية مؤقتة."
+        />
+        <div className="mt-8">
+          <SocialGrid />
         </div>
       </Section>
 
