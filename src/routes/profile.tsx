@@ -8,6 +8,7 @@ import { updateMyProfile } from "@/lib/me.functions";
 import { useDashboard } from "@/hooks/useDashboard";
 import { Progress, Section, StatCard } from "@/components/site/Bits";
 import { DeptIcon } from "@/components/site/DeptIcon";
+import { CertificateCard } from "@/components/site/CertificateCard";
 import { accentStyle, arabicDate, arabicNumber } from "@/lib/dept";
 
 export const Route = createFileRoute("/profile")({
@@ -152,60 +153,65 @@ function ProfilePage() {
       </Section>
 
       <Section>
-        <div className="grid gap-4 lg:grid-cols-2">
-          <div className="glass rounded-2xl p-6 shadow-glass">
+        <div className="glass rounded-2xl p-6 shadow-glass">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2">
               <Award className="size-5 text-primary" />
               <h2 className="text-lg font-bold text-foreground">شهاداتي</h2>
             </div>
-            {data.certificates.length === 0 ? (
-              <p className="mt-4 text-sm text-muted-foreground">
-                أكمل أول دورة لتصدر شهادتك الأولى.
-              </p>
-            ) : (
-              <ul className="mt-4 space-y-2.5">
-                {data.certificates.map((c) => (
-                  <li key={c.id} className="glass-soft rounded-xl p-4">
-                    <p className="text-sm font-semibold text-foreground">{c.course_title}</p>
-                    <p className="font-num mt-1 text-xs text-muted-foreground">
-                      {c.serial} · {c.department_name} · {arabicDate(c.issued_at)}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <span className="font-num glass-soft rounded-full px-3 py-1 text-xs font-bold text-primary">
+              {arabicNumber(data.certificates.length)} شهادة
+            </span>
           </div>
-
-          <div className="glass rounded-2xl p-6 shadow-glass">
-            <div className="flex items-center gap-2">
-              <Trophy className="size-5 text-gold" />
-              <h2 className="text-lg font-bold text-foreground">سجل النقاط</h2>
+          {data.certificates.length === 0 ? (
+            <p className="mt-4 text-sm text-muted-foreground">
+              أكمل أول دورة لتصدر شهادتك الأولى.
+            </p>
+          ) : (
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {data.certificates.map((c) => (
+                <CertificateCard
+                  key={c.id}
+                  cert={c}
+                  holder={data.profile.full_name ?? "عضو النادي"}
+                />
+              ))}
             </div>
-            {data.transactions.length === 0 ? (
-              <p className="mt-4 text-sm text-muted-foreground">لا توجد حركات نقاط بعد.</p>
-            ) : (
-              <ul className="mt-4 space-y-2">
-                {data.transactions.map((t) => (
-                  <li
-                    key={t.id}
-                    className="flex items-center justify-between gap-3 border-b border-glass-border pb-2 last:border-0"
-                  >
-                    <span className="min-w-0">
-                      <span className="block truncate text-sm text-foreground">{t.reason_ar}</span>
-                      <span className="font-num block text-[11px] text-muted-foreground">
-                        {arabicDate(t.created_at)}
-                      </span>
-                    </span>
-                    <span className="font-num shrink-0 text-sm font-bold text-success">
-                      +{arabicNumber(t.amount)}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
+          )}
         </div>
       </Section>
+
+      <Section>
+        <div className="glass rounded-2xl p-6 shadow-glass">
+          <div className="flex items-center gap-2">
+            <Trophy className="size-5 text-gold" />
+            <h2 className="text-lg font-bold text-foreground">سجل النقاط</h2>
+          </div>
+          {data.transactions.length === 0 ? (
+            <p className="mt-4 text-sm text-muted-foreground">لا توجد حركات نقاط بعد.</p>
+          ) : (
+            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+              {data.transactions.map((t) => (
+                <li
+                  key={t.id}
+                  className="flex items-center justify-between gap-3 border-b border-glass-border pb-2 last:border-0"
+                >
+                  <span className="min-w-0">
+                    <span className="block truncate text-sm text-foreground">{t.reason_ar}</span>
+                    <span className="font-num block text-[11px] text-muted-foreground">
+                      {arabicDate(t.created_at)}
+                    </span>
+                  </span>
+                  <span className="font-num shrink-0 text-sm font-bold text-success">
+                    +{arabicNumber(t.amount)}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </Section>
+
 
       <Section>
         <div className="glass rounded-2xl p-6 shadow-glass">
