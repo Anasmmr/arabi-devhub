@@ -9,6 +9,7 @@ import { useDashboard } from "@/hooks/useDashboard";
 import { Progress, Section } from "@/components/site/Bits";
 import { DeptIcon } from "@/components/site/DeptIcon";
 import { deptImage } from "@/lib/deptImages";
+import { deptPath } from "@/lib/deptPaths";
 import { accentStyle, arabicDate, arabicNumber } from "@/lib/dept";
 
 export const Route = createFileRoute("/departments/$slug")({
