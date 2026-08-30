@@ -6,11 +6,7 @@ import { DeptIcon } from "@/components/site/DeptIcon";
 import { SocialGrid } from "@/components/site/Socials";
 import { deptImage } from "@/lib/deptImages";
 import { accentStyle, arabicNumber } from "@/lib/dept";
-import club1 from "@/assets/club-1.jpg";
-import club2 from "@/assets/club-2.jpg";
-import club3 from "@/assets/club-3.jpg";
-import club4 from "@/assets/club-4.jpg";
-import club5 from "@/assets/club-5.jpg";
+import { clubCover, clubGallery } from "@/lib/clubImages";
 
 export const Route = createFileRoute("/")({
   loader: () => getHomeData(),
@@ -32,13 +28,7 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const gallery = [
-  { src: club1, alt: "أعضاء النادي يعملون معًا على مشاريع برمجية" },
-  { src: club2, alt: "لقاء مجتمعي وعرض تقني على المسرح" },
-  { src: club3, alt: "ورشة عملية للمطورين المبتدئين" },
-  { src: club4, alt: "تكريم فريق فائز في هاكاثون النادي" },
-  { src: club5, alt: "جلسة مراجعة كود جماعية بين الأعضاء" },
-];
+const gallery = clubGallery;
 
 const achievements = [
   "أكثر من ٦٠ لقاءً وورشة تقنية بحضور مباشر وعن بُعد.",
@@ -92,10 +82,10 @@ function Home() {
           </div>
           <div className="reveal overflow-hidden rounded-3xl shadow-glass-lg">
             <img
-              src={club1}
-              alt="أعضاء نادي Google Developer يعملون معًا"
-              width={1200}
-              height={800}
+              src={clubCover.src}
+              alt={clubCover.alt}
+              width={1290}
+              height={860}
               className="h-full w-full object-cover"
             />
           </div>

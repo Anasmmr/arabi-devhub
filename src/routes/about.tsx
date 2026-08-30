@@ -3,11 +3,7 @@ import { Award, CheckCircle2, Sparkles, Target } from "lucide-react";
 import { getAboutData } from "@/lib/community.functions";
 import { Section, SectionHead, StatCard } from "@/components/site/Bits";
 import { SocialGrid } from "@/components/site/Socials";
-import club1 from "@/assets/club-1.jpg";
-import club2 from "@/assets/club-2.jpg";
-import club3 from "@/assets/club-3.jpg";
-import club4 from "@/assets/club-4.jpg";
-import club5 from "@/assets/club-5.jpg";
+import { clubGallery } from "@/lib/clubImages";
 
 export const Route = createFileRoute("/about")({
   loader: () => getAboutData(),
@@ -29,13 +25,7 @@ export const Route = createFileRoute("/about")({
   component: About,
 });
 
-const gallery = [
-  { src: club1, alt: "أعضاء النادي يعملون معًا على مشاريع برمجية" },
-  { src: club2, alt: "لقاء مجتمعي وعرض تقني على المسرح" },
-  { src: club3, alt: "ورشة عملية للمطورين المبتدئين" },
-  { src: club4, alt: "تكريم فريق فائز في هاكاثون النادي" },
-  { src: club5, alt: "جلسة مراجعة كود جماعية بين الأعضاء" },
-];
+const gallery = clubGallery;
 
 const achievements = [
   "أكثر من ٦٠ لقاءً وورشة تقنية بحضور مباشر وعن بُعد.",
