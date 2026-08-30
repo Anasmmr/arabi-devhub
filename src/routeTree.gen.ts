@@ -10,6 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as FoundersRouteImport } from './routes/founders'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as DepartmentsIndexRouteImport } from './routes/departments/index'
 import { Route as DepartmentsSlugRouteImport } from './routes/departments/$slug'
 import { Route as ApiPublicGooglelyRouteImport } from './routes/api/public/googlely'
@@ -17,6 +20,21 @@ import { Route as ApiPublicGooglelyRouteImport } from './routes/api/public/googl
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoundersRoute = FoundersRouteImport.update({
+  id: '/founders',
+  path: '/founders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DepartmentsIndexRoute = DepartmentsIndexRouteImport.update({
@@ -37,12 +55,18 @@ const ApiPublicGooglelyRoute = ApiPublicGooglelyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/founders': typeof FoundersRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/departments/$slug': typeof DepartmentsSlugRoute
   '/departments/': typeof DepartmentsIndexRoute
   '/api/public/googlely': typeof ApiPublicGooglelyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/founders': typeof FoundersRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/departments/$slug': typeof DepartmentsSlugRoute
   '/departments': typeof DepartmentsIndexRoute
   '/api/public/googlely': typeof ApiPublicGooglelyRoute
@@ -50,6 +74,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/founders': typeof FoundersRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/departments/$slug': typeof DepartmentsSlugRoute
   '/departments/': typeof DepartmentsIndexRoute
   '/api/public/googlely': typeof ApiPublicGooglelyRoute
@@ -57,12 +84,28 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/departments/$slug' | '/departments/' | '/api/public/googlely'
+    | '/'
+    | '/about'
+    | '/founders'
+    | '/leaderboard'
+    | '/departments/$slug'
+    | '/departments/'
+    | '/api/public/googlely'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/departments/$slug' | '/departments' | '/api/public/googlely'
+  to:
+    | '/'
+    | '/about'
+    | '/founders'
+    | '/leaderboard'
+    | '/departments/$slug'
+    | '/departments'
+    | '/api/public/googlely'
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/founders'
+    | '/leaderboard'
     | '/departments/$slug'
     | '/departments/'
     | '/api/public/googlely'
@@ -70,6 +113,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  FoundersRoute: typeof FoundersRoute
+  LeaderboardRoute: typeof LeaderboardRoute
   DepartmentsSlugRoute: typeof DepartmentsSlugRoute
   DepartmentsIndexRoute: typeof DepartmentsIndexRoute
   ApiPublicGooglelyRoute: typeof ApiPublicGooglelyRoute
@@ -82,6 +128,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/founders': {
+      id: '/founders'
+      path: '/founders'
+      fullPath: '/founders'
+      preLoaderRoute: typeof FoundersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/departments/': {
@@ -110,6 +177,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  FoundersRoute: FoundersRoute,
+  LeaderboardRoute: LeaderboardRoute,
   DepartmentsSlugRoute: DepartmentsSlugRoute,
   DepartmentsIndexRoute: DepartmentsIndexRoute,
   ApiPublicGooglelyRoute: ApiPublicGooglelyRoute,
