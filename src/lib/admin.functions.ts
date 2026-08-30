@@ -15,34 +15,18 @@ export const getMyRoles = createServerFn({ method: "GET" })
     return { roles, isAdmin: roles.includes("admin"), isModerator: roles.includes("moderator") };
   });
 
-async function assertAdmin(supabase: { rpc: (...args: never[]) => unknown }, userId: string) {
-  const { data, error } = await (
-    supabase as unknown as {
-      from: (t: string) => {
-        select: (c: string) => {
-          eq: (
-            c: string,
-            v: string,
-          ) => {
-            eq: (c: string, v: string) => { maybeSingle: () => Promise<{ data: unknown; error: unknown }> };
-          };
-        };
-      };
-    }
-  )
-    .from("user_roles")
-    .select("role")
-    .eq("user_id", userId)
-    .eq("role", "admin")
-    .maybeSingle();
-  if (error || !data) throw new Error("not_authorized");
-}
-
 /** Admin-only: list members with their emails and roles. */
 export const listMembers = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
-    await assertAdmin(context.supabase as never, context.userId);
+    const { data: adminRow } = await context.supabase
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", context.userId)
+      .eq("role", "admin")
+      .maybeSingle();
+    if (!adminRow) throw new Error("not_authorized");
+
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
     const [{ data: users, error: uErr }, { data: roles }, { data: profiles }] = await Promise.all([
