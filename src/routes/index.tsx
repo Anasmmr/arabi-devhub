@@ -82,10 +82,10 @@ function Home() {
           </div>
           <div className="reveal overflow-hidden rounded-3xl shadow-glass-lg">
             <img
-              src={club1}
-              alt="أعضاء نادي Google Developer يعملون معًا"
-              width={1200}
-              height={800}
+              src={clubCover.src}
+              alt={clubCover.alt}
+              width={1290}
+              height={860}
               className="h-full w-full object-cover"
             />
           </div>
