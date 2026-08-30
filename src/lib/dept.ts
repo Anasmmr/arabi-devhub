@@ -1,0 +1,49 @@
+export type Accent = "brand" | "sky" | "amber" | "violet";
+
+type AccentStyle = {
+  text: string;
+  bg: string;
+  bar: string;
+  ring: string;
+  soft: string;
+};
+
+const styles: Record<Accent, AccentStyle> = {
+  brand: {
+    text: "text-dept-ai",
+    bg: "bg-dept-ai",
+    bar: "bg-dept-ai",
+    ring: "ring-dept-ai/30",
+    soft: "bg-dept-ai/10",
+  },
+  sky: {
+    text: "text-dept-app",
+    bg: "bg-dept-app",
+    bar: "bg-dept-app",
+    ring: "ring-dept-app/30",
+    soft: "bg-dept-app/10",
+  },
+  amber: {
+    text: "text-dept-security",
+    bg: "bg-dept-security",
+    bar: "bg-dept-security",
+    ring: "ring-dept-security/30",
+    soft: "bg-dept-security/10",
+  },
+  violet: {
+    text: "text-dept-uiux",
+    bg: "bg-dept-uiux",
+    bar: "bg-dept-uiux",
+    ring: "ring-dept-uiux/30",
+    soft: "bg-dept-uiux/10",
+  },
+};
+
+export function accentStyle(accent: string): AccentStyle {
+  return styles[(accent as Accent) in styles ? (accent as Accent) : "brand"];
+}
+
+export const arabicNumber = (n: number) => new Intl.NumberFormat("ar-EG").format(n);
+
+export const arabicDate = (iso: string) =>
+  new Intl.DateTimeFormat("ar-EG", { dateStyle: "long" }).format(new Date(iso));
