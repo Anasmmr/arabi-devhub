@@ -12,4 +12,4 @@ export const clubGallery = [
   { src: club1.url, alt: "أحد أعضاء النادي في جلسة حوارية مع الحضور" },
 ];
 
-export const clubCover = clubGallery[0];
+export const clubCover = { src: club2.url, alt: clubGallery[0]!.alt };
