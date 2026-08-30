@@ -41,7 +41,7 @@ function AuthPage() {
     setBusy(true);
     try {
       if (mode === "signup") {
-        const { error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email,
           password,
           options: {
@@ -50,7 +50,13 @@ function AuthPage() {
           },
         });
         if (error) throw error;
-        toast.success("تم إنشاء الحساب — تحقّق من بريدك لتأكيد التسجيل.");
+        if (data.session) {
+          toast.success("تم إنشاء الحساب — أهلاً بك!");
+          navigate({ to: "/profile" });
+        } else {
+          toast.success("تم إنشاء الحساب — تحقّق من بريدك لتأكيد التسجيل.");
+        }
+
 
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
