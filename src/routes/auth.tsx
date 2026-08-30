@@ -25,6 +25,7 @@ export const Route = createFileRoute("/auth")({
 function AuthPage() {
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [fullName, setFullName] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
@@ -45,11 +46,12 @@ function AuthPage() {
           password,
           options: {
             emailRedirectTo: `${window.location.origin}/profile`,
-            data: { full_name: fullName },
+            data: { full_name: fullName, whatsapp_phone: phone },
           },
         });
         if (error) throw error;
         toast.success("تم إنشاء الحساب — تحقّق من بريدك لتأكيد التسجيل.");
+
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
@@ -112,6 +114,28 @@ function AuthPage() {
                   />
                 </div>
               )}
+              {mode === "signup" && (
+                <div>
+                  <label htmlFor="phone" className="text-xs font-semibold text-foreground">
+                    رقم الجوال (واتساب)
+                  </label>
+                  <input
+                    id="phone"
+                    required
+                    dir="ltr"
+                    inputMode="tel"
+                    placeholder="+9665XXXXXXXX"
+                    pattern="^\+?[\d\s-]{8,20}$"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="mt-1.5 w-full rounded-xl border border-glass-border bg-background/60 px-4 py-3 text-sm text-foreground outline-none focus:border-primary"
+                  />
+                  <p className="mt-1 text-[11px] text-muted-foreground">
+                    نستخدمه لربط نقاط تفاعلك في مجموعات واتساب بحسابك.
+                  </p>
+                </div>
+              )}
+
               <div>
                 <label htmlFor="email" className="text-xs font-semibold text-foreground">
                   البريد الإلكتروني

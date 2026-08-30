@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
-import { useQueryClient } from "@tanstack/react-query";
-import { Home, LayoutGrid, Trophy, User, Menu, X, LogOut } from "lucide-react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useServerFn } from "@tanstack/react-start";
+import { Home, LayoutGrid, Trophy, User, Menu, X, LogOut, ShieldCheck } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useSession } from "@/hooks/useSession";
+import { getMyRoles } from "@/lib/admin.functions";
+
 
 const links = [
   { to: "/", label: "الرئيسية" },
@@ -27,6 +30,13 @@ export function Header() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const fetchRoles = useServerFn(getMyRoles);
+  const { data: roles } = useQuery({
+    queryKey: ["my-roles", user?.id],
+    queryFn: () => fetchRoles(),
+    enabled: Boolean(user),
+  });
+
 
   async function signOut() {
     await queryClient.cancelQueries();
@@ -75,12 +85,22 @@ export function Header() {
             <div className="flex items-center gap-2">
               {user ? (
                 <>
+                  {roles?.isAdmin && (
+                    <Link
+                      to="/admin"
+                      className="glass-soft inline-flex items-center gap-1.5 rounded-xl px-3 py-2 text-sm font-semibold text-primary"
+                    >
+                      <ShieldCheck className="size-4" />
+                      <span className="hidden sm:inline">الإدارة</span>
+                    </Link>
+                  )}
                   <Link
                     to="/profile"
                     className="hidden rounded-xl bg-ink px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-ink/90 sm:inline-flex"
                   >
                     لوحتي
                   </Link>
+
                   <button
                     onClick={signOut}
                     aria-label="تسجيل الخروج"

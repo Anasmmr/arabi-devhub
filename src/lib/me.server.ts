@@ -9,20 +9,50 @@ export function normalizePhone(input: string) {
   return digits ? `+${digits}` : "";
 }
 
-export async function ensureProfile(sb: SB, userId: string, fallbackName?: string) {
+export async function ensureProfile(
+  sb: SB,
+  userId: string,
+  fallbackName?: string,
+  fallbackPhone?: string,
+) {
   const { data } = await sb.from("profiles").select("*").eq("id", userId).maybeSingle();
-  if (data) return data;
+  if (data) {
+    // Backfill the WhatsApp number captured at signup if the profile has none yet.
+    if (!data.whatsapp_phone && fallbackPhone) {
+      const phone = normalizePhone(fallbackPhone);
+      if (phone) {
+        const { data: updated } = await sb
+          .from("profiles")
+          .update({ whatsapp_phone: phone })
+          .eq("id", userId)
+          .select("*")
+          .maybeSingle();
+        return updated ?? data;
+      }
+    }
+    return data;
+  }
   const { data: created, error } = await sb
     .from("profiles")
-    .insert({ id: userId, full_name: fallbackName?.trim() || "عضو جديد" })
+    .insert({
+      id: userId,
+      full_name: fallbackName?.trim() || "عضو جديد",
+      whatsapp_phone: fallbackPhone ? normalizePhone(fallbackPhone) || null : null,
+    })
     .select("*")
     .single();
   if (error) throw error;
   return created;
 }
 
-export async function buildDashboard(sb: SB, userId: string, fallbackName?: string) {
-  const profile = await ensureProfile(sb, userId, fallbackName);
+export async function buildDashboard(
+  sb: SB,
+  userId: string,
+  fallbackName?: string,
+  fallbackPhone?: string,
+) {
+  const profile = await ensureProfile(sb, userId, fallbackName, fallbackPhone);
+
   const departments = await fetchDepartmentsWithCourses();
 
   const [{ data: completions }, { data: certificates }, { data: transactions }, ahead] =

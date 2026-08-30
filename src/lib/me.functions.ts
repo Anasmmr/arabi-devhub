@@ -6,12 +6,12 @@ import { buildDashboard, ensureProfile, normalizePhone } from "./me.server";
 export const getMyDashboard = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
-    const name =
-      (context.claims?.["user_metadata"] as { full_name?: string; name?: string } | undefined)
-        ?.full_name ??
-      (context.claims?.["user_metadata"] as { name?: string } | undefined)?.name;
-    return buildDashboard(context.supabase, context.userId, name);
+    const meta = context.claims?.["user_metadata"] as
+      | { full_name?: string; name?: string; whatsapp_phone?: string }
+      | undefined;
+    return buildDashboard(context.supabase, context.userId, meta?.full_name ?? meta?.name, meta?.whatsapp_phone);
   });
+
 
 export const updateMyProfile = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
