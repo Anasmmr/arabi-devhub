@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DepartmentsIndexRouteImport } from './routes/departments/index'
+import { Route as DepartmentsSlugRouteImport } from './routes/departments/$slug'
 import { Route as ApiPublicGooglelyRouteImport } from './routes/api/public/googlely'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const DepartmentsIndexRoute = DepartmentsIndexRouteImport.update({
   path: '/departments/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DepartmentsSlugRoute = DepartmentsSlugRouteImport.update({
+  id: '/departments/$slug',
+  path: '/departments/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicGooglelyRoute = ApiPublicGooglelyRouteImport.update({
   id: '/api/public/googlely',
   path: '/api/public/googlely',
@@ -31,30 +37,40 @@ const ApiPublicGooglelyRoute = ApiPublicGooglelyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/departments/$slug': typeof DepartmentsSlugRoute
   '/departments/': typeof DepartmentsIndexRoute
   '/api/public/googlely': typeof ApiPublicGooglelyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/departments/$slug': typeof DepartmentsSlugRoute
   '/departments': typeof DepartmentsIndexRoute
   '/api/public/googlely': typeof ApiPublicGooglelyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/departments/$slug': typeof DepartmentsSlugRoute
   '/departments/': typeof DepartmentsIndexRoute
   '/api/public/googlely': typeof ApiPublicGooglelyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/departments/' | '/api/public/googlely'
+  fullPaths:
+    '/' | '/departments/$slug' | '/departments/' | '/api/public/googlely'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/departments' | '/api/public/googlely'
-  id: '__root__' | '/' | '/departments/' | '/api/public/googlely'
+  to: '/' | '/departments/$slug' | '/departments' | '/api/public/googlely'
+  id:
+    | '__root__'
+    | '/'
+    | '/departments/$slug'
+    | '/departments/'
+    | '/api/public/googlely'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DepartmentsSlugRoute: typeof DepartmentsSlugRoute
   DepartmentsIndexRoute: typeof DepartmentsIndexRoute
   ApiPublicGooglelyRoute: typeof ApiPublicGooglelyRoute
 }
@@ -75,6 +91,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DepartmentsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/departments/$slug': {
+      id: '/departments/$slug'
+      path: '/departments/$slug'
+      fullPath: '/departments/$slug'
+      preLoaderRoute: typeof DepartmentsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/googlely': {
       id: '/api/public/googlely'
       path: '/api/public/googlely'
@@ -87,6 +110,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DepartmentsSlugRoute: DepartmentsSlugRoute,
   DepartmentsIndexRoute: DepartmentsIndexRoute,
   ApiPublicGooglelyRoute: ApiPublicGooglelyRoute,
 }
