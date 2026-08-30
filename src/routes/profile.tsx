@@ -8,6 +8,7 @@ import { updateMyProfile } from "@/lib/me.functions";
 import { useDashboard } from "@/hooks/useDashboard";
 import { Progress, Section, StatCard } from "@/components/site/Bits";
 import { DeptIcon } from "@/components/site/DeptIcon";
+import { CertificateCard } from "@/components/site/CertificateCard";
 import { accentStyle, arabicDate, arabicNumber } from "@/lib/dept";
 
 export const Route = createFileRoute("/profile")({
