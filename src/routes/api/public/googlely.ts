@@ -75,7 +75,7 @@ export const Route = createFileRoute("/api/public/googlely")({
           p_amount: parsed.points,
           p_reason_ar: parsed.reason_ar,
           p_kind: "whatsapp",
-          p_department_id: departmentId,
+          ...(departmentId ? { p_department_id: departmentId } : {}),
           p_reference: `whatsapp:${parsed.reference}`,
         });
         if (error) return json({ error: "award_failed" }, 500);
