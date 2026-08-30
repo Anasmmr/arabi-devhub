@@ -28,13 +28,7 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const gallery = [
-  { src: club1, alt: "أعضاء النادي يعملون معًا على مشاريع برمجية" },
-  { src: club2, alt: "لقاء مجتمعي وعرض تقني على المسرح" },
-  { src: club3, alt: "ورشة عملية للمطورين المبتدئين" },
-  { src: club4, alt: "تكريم فريق فائز في هاكاثون النادي" },
-  { src: club5, alt: "جلسة مراجعة كود جماعية بين الأعضاء" },
-];
+const gallery = clubGallery;
 
 const achievements = [
   "أكثر من ٦٠ لقاءً وورشة تقنية بحضور مباشر وعن بُعد.",
