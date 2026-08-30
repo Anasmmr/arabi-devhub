@@ -15,6 +15,32 @@ export const deptPaths: Record<string, ExternalPath[]> = {
       url: "https://satr.tuwaiq.edu.sa/path/zaNuCyeqGx/view",
     },
   ],
+  app: [
+    {
+      title: "مسار تطوير تطبيقات Flutter",
+      provider: "منصة سطر — طويق",
+      description: "ابنِ تطبيقات موبايل متعددة المنصات باستخدام Flutter وDart من الصفر حتى النشر.",
+      url: "https://satr.tuwaiq.edu.sa/path/OHarLRCHae/view",
+    },
+    {
+      title: "مسار تطوير تطبيقات iOS",
+      provider: "منصة سطر — طويق",
+      description: "تعلّم Swift وSwiftUI وبناء تطبيقات iOS احترافية تتوافق مع معايير أبل.",
+      url: "https://satr.tuwaiq.edu.sa/path/TxrppJSrgx/view",
+    },
+    {
+      title: "مسار تطوير تطبيقات Android",
+      provider: "منصة سطر — طويق",
+      description: "مسار عملي لتطوير تطبيقات Android باستخدام Kotlin وأدوات Google الحديثة.",
+      url: "https://satr.tuwaiq.edu.sa/path/KGYLmAVZWT/view",
+    },
+    {
+      title: "مسار تطوير الألعاب",
+      provider: "منصة سطر — طويق",
+      description: "ادخل عالم تطوير الألعاب وتعلّم المحركات والأفكار التقنية لبناء ألعابك الأولى.",
+      url: "https://satr.tuwaiq.edu.sa/path/QkAdKXTgYY/view",
+    },
+  ],
   security: [
     {
       title: "مسار الأمن السيبراني",
