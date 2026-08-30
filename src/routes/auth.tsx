@@ -25,6 +25,7 @@ export const Route = createFileRoute("/auth")({
 function AuthPage() {
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [fullName, setFullName] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
@@ -45,11 +46,12 @@ function AuthPage() {
           password,
           options: {
             emailRedirectTo: `${window.location.origin}/profile`,
-            data: { full_name: fullName },
+            data: { full_name: fullName, whatsapp_phone: phone },
           },
         });
         if (error) throw error;
         toast.success("تم إنشاء الحساب — تحقّق من بريدك لتأكيد التسجيل.");
+
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
