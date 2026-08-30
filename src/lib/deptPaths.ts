@@ -7,6 +7,14 @@ export type ExternalPath = {
 
 /** Curated external learning paths per department slug. */
 export const deptPaths: Record<string, ExternalPath[]> = {
+  ai: [
+    {
+      title: "مسار تعلم الذكاء الاصطناعي",
+      provider: "منصة سطر — طويق",
+      description: "مسار متكامل بالعربية يغطي أساسيات الذكاء الاصطناعي وتعلم الآلة وكيفية بناء نماذج ذكية.",
+      url: "https://satr.tuwaiq.edu.sa/path/zaNuCyeqGx/view",
+    },
+  ],
   security: [
     {
       title: "مسار الأمن السيبراني",
