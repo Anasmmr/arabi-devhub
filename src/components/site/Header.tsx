@@ -27,6 +27,13 @@ export function Header() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const fetchRoles = useServerFn(getMyRoles);
+  const { data: roles } = useQuery({
+    queryKey: ["my-roles", user?.id],
+    queryFn: () => fetchRoles(),
+    enabled: Boolean(user),
+  });
+
 
   async function signOut() {
     await queryClient.cancelQueries();
