@@ -14,13 +14,323 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      certificates: {
+        Row: {
+          course_id: string
+          department_id: string
+          email_sent: boolean
+          id: string
+          issued_at: string
+          serial: string
+          status: string
+          user_id: string
+        }
+        Insert: {
+          course_id: string
+          department_id: string
+          email_sent?: boolean
+          id?: string
+          issued_at?: string
+          serial: string
+          status?: string
+          user_id: string
+        }
+        Update: {
+          course_id?: string
+          department_id?: string
+          email_sent?: boolean
+          id?: string
+          issued_at?: string
+          serial?: string
+          status?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "certificates_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "certificates_department_id_fkey"
+            columns: ["department_id"]
+            isOneToOne: false
+            referencedRelation: "departments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      course_completions: {
+        Row: {
+          completed_at: string
+          course_id: string
+          id: string
+          source: string
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string
+          course_id: string
+          id?: string
+          source?: string
+          user_id: string
+        }
+        Update: {
+          completed_at?: string
+          course_id?: string
+          id?: string
+          source?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "course_completions_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      courses: {
+        Row: {
+          created_at: string
+          department_id: string
+          description_ar: string
+          id: string
+          points: number
+          satr_url: string
+          sort_order: number
+          title_ar: string
+        }
+        Insert: {
+          created_at?: string
+          department_id: string
+          description_ar: string
+          id?: string
+          points?: number
+          satr_url: string
+          sort_order?: number
+          title_ar: string
+        }
+        Update: {
+          created_at?: string
+          department_id?: string
+          description_ar?: string
+          id?: string
+          points?: number
+          satr_url?: string
+          sort_order?: number
+          title_ar?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "courses_department_id_fkey"
+            columns: ["department_id"]
+            isOneToOne: false
+            referencedRelation: "departments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      departments: {
+        Row: {
+          accent: string
+          created_at: string
+          icon: string
+          id: string
+          intro_ar: string
+          learn_items_ar: string[]
+          name_ar: string
+          name_en: string
+          short_description_ar: string
+          slug: string
+          sort_order: number
+        }
+        Insert: {
+          accent?: string
+          created_at?: string
+          icon?: string
+          id?: string
+          intro_ar: string
+          learn_items_ar?: string[]
+          name_ar: string
+          name_en: string
+          short_description_ar: string
+          slug: string
+          sort_order?: number
+        }
+        Update: {
+          accent?: string
+          created_at?: string
+          icon?: string
+          id?: string
+          intro_ar?: string
+          learn_items_ar?: string[]
+          name_ar?: string
+          name_en?: string
+          short_description_ar?: string
+          slug?: string
+          sort_order?: number
+        }
+        Relationships: []
+      }
+      founders: {
+        Row: {
+          bio_ar: string
+          github_url: string | null
+          id: string
+          image_url: string | null
+          initial: string
+          linkedin_url: string | null
+          name: string
+          role_ar: string
+          sort_order: number
+          x_url: string | null
+        }
+        Insert: {
+          bio_ar: string
+          github_url?: string | null
+          id?: string
+          image_url?: string | null
+          initial?: string
+          linkedin_url?: string | null
+          name: string
+          role_ar: string
+          sort_order?: number
+          x_url?: string | null
+        }
+        Update: {
+          bio_ar?: string
+          github_url?: string | null
+          id?: string
+          image_url?: string | null
+          initial?: string
+          linkedin_url?: string | null
+          name?: string
+          role_ar?: string
+          sort_order?: number
+          x_url?: string | null
+        }
+        Relationships: []
+      }
+      point_transactions: {
+        Row: {
+          amount: number
+          created_at: string
+          department_id: string | null
+          id: string
+          kind: string
+          reason_ar: string
+          reference: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          department_id?: string | null
+          id?: string
+          kind?: string
+          reason_ar: string
+          reference: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          department_id?: string | null
+          id?: string
+          kind?: string
+          reason_ar?: string
+          reference?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "point_transactions_department_id_fkey"
+            columns: ["department_id"]
+            isOneToOne: false
+            referencedRelation: "departments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          city: string | null
+          created_at: string
+          full_name: string
+          github_url: string | null
+          headline: string | null
+          id: string
+          is_demo: boolean
+          linkedin_url: string | null
+          total_points: number
+          updated_at: string
+          website_url: string | null
+          whatsapp_phone: string | null
+          x_url: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          city?: string | null
+          created_at?: string
+          full_name?: string
+          github_url?: string | null
+          headline?: string | null
+          id: string
+          is_demo?: boolean
+          linkedin_url?: string | null
+          total_points?: number
+          updated_at?: string
+          website_url?: string | null
+          whatsapp_phone?: string | null
+          x_url?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          city?: string | null
+          created_at?: string
+          full_name?: string
+          github_url?: string | null
+          headline?: string | null
+          id?: string
+          is_demo?: boolean
+          linkedin_url?: string | null
+          total_points?: number
+          updated_at?: string
+          website_url?: string | null
+          whatsapp_phone?: string | null
+          x_url?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      award_points: {
+        Args: {
+          p_amount: number
+          p_department_id: string
+          p_kind: string
+          p_reason_ar: string
+          p_reference: string
+          p_user_id: string
+        }
+        Returns: boolean
+      }
+      complete_course: {
+        Args: { p_course_id: string; p_user_id: string }
+        Returns: Json
+      }
     }
     Enums: {
       [_ in never]: never
