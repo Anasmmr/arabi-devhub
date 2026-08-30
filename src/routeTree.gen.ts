@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as FoundersRouteImport } from './routes/founders'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as DepartmentsIndexRouteImport } from './routes/departments/index'
 import { Route as DepartmentsSlugRouteImport } from './routes/departments/$slug'
 import { Route as ApiPublicGooglelyRouteImport } from './routes/api/public/googlely'
@@ -43,6 +44,11 @@ const LeaderboardRoute = LeaderboardRouteImport.update({
   path: '/leaderboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DepartmentsIndexRoute = DepartmentsIndexRouteImport.update({
   id: '/departments/',
   path: '/departments/',
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/founders': typeof FoundersRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/profile': typeof ProfileRoute
   '/departments/$slug': typeof DepartmentsSlugRoute
   '/departments/': typeof DepartmentsIndexRoute
   '/api/public/googlely': typeof ApiPublicGooglelyRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/founders': typeof FoundersRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/profile': typeof ProfileRoute
   '/departments/$slug': typeof DepartmentsSlugRoute
   '/departments': typeof DepartmentsIndexRoute
   '/api/public/googlely': typeof ApiPublicGooglelyRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/founders': typeof FoundersRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/profile': typeof ProfileRoute
   '/departments/$slug': typeof DepartmentsSlugRoute
   '/departments/': typeof DepartmentsIndexRoute
   '/api/public/googlely': typeof ApiPublicGooglelyRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/founders'
     | '/leaderboard'
+    | '/profile'
     | '/departments/$slug'
     | '/departments/'
     | '/api/public/googlely'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/founders'
     | '/leaderboard'
+    | '/profile'
     | '/departments/$slug'
     | '/departments'
     | '/api/public/googlely'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/founders'
     | '/leaderboard'
+    | '/profile'
     | '/departments/$slug'
     | '/departments/'
     | '/api/public/googlely'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   FoundersRoute: typeof FoundersRoute
   LeaderboardRoute: typeof LeaderboardRoute
+  ProfileRoute: typeof ProfileRoute
   DepartmentsSlugRoute: typeof DepartmentsSlugRoute
   DepartmentsIndexRoute: typeof DepartmentsIndexRoute
   ApiPublicGooglelyRoute: typeof ApiPublicGooglelyRoute
@@ -171,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LeaderboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/departments/': {
       id: '/departments/'
       path: '/departments'
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   FoundersRoute: FoundersRoute,
   LeaderboardRoute: LeaderboardRoute,
+  ProfileRoute: ProfileRoute,
   DepartmentsSlugRoute: DepartmentsSlugRoute,
   DepartmentsIndexRoute: DepartmentsIndexRoute,
   ApiPublicGooglelyRoute: ApiPublicGooglelyRoute,
