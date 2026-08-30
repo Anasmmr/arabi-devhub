@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
-import { useQueryClient } from "@tanstack/react-query";
-import { Home, LayoutGrid, Trophy, User, Menu, X, LogOut } from "lucide-react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useServerFn } from "@tanstack/react-start";
+import { Home, LayoutGrid, Trophy, User, Menu, X, LogOut, ShieldCheck } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useSession } from "@/hooks/useSession";
+import { getMyRoles } from "@/lib/admin.functions";
+
 
 const links = [
   { to: "/", label: "الرئيسية" },
