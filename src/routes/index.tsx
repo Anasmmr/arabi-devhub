@@ -6,11 +6,7 @@ import { DeptIcon } from "@/components/site/DeptIcon";
 import { SocialGrid } from "@/components/site/Socials";
 import { deptImage } from "@/lib/deptImages";
 import { accentStyle, arabicNumber } from "@/lib/dept";
-import club1 from "@/assets/club-1.jpg";
-import club2 from "@/assets/club-2.jpg";
-import club3 from "@/assets/club-3.jpg";
-import club4 from "@/assets/club-4.jpg";
-import club5 from "@/assets/club-5.jpg";
+import { clubCover, clubGallery } from "@/lib/clubImages";
 
 export const Route = createFileRoute("/")({
   loader: () => getHomeData(),
