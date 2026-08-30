@@ -65,6 +65,9 @@ function DepartmentPage() {
   const percent = department.courses.length
     ? Math.round((completedCount / department.courses.length) * 100)
     : 0;
+  const paths = deptPath(department.slug);
+  const totalPossiblePoints = department.courses.reduce((sum, c) => sum + c.points, 0);
+
 
   return (
     <main>
