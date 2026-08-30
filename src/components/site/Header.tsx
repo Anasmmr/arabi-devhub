@@ -85,12 +85,22 @@ export function Header() {
             <div className="flex items-center gap-2">
               {user ? (
                 <>
+                  {roles?.isAdmin && (
+                    <Link
+                      to="/admin"
+                      className="glass-soft inline-flex items-center gap-1.5 rounded-xl px-3 py-2 text-sm font-semibold text-primary"
+                    >
+                      <ShieldCheck className="size-4" />
+                      <span className="hidden sm:inline">الإدارة</span>
+                    </Link>
+                  )}
                   <Link
                     to="/profile"
                     className="hidden rounded-xl bg-ink px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-ink/90 sm:inline-flex"
                   >
                     لوحتي
                   </Link>
+
                   <button
                     onClick={signOut}
                     aria-label="تسجيل الخروج"
