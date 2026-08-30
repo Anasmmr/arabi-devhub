@@ -180,7 +180,9 @@ function DepartmentPage() {
               ))}
             </div>
             <p className="mt-4 text-xs text-muted-foreground">
-              ابدأ رحلتك في حماية الفضاء الرقمي 🚀
+              {department.slug === "ai"
+                ? "ابدأ رحلتك في عالم الذكاء الاصطناعي 🚀"
+                : "ابدأ رحلتك في حماية الفضاء الرقمي 🚀"}
             </p>
           </div>
         </Section>
