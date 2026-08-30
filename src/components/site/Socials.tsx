@@ -1,12 +1,8 @@
-import { Instagram, Linkedin, MessageCircle, Send, Youtube } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 export const socials = [
-  { label: "X / تويتر", handle: "@GoogleDevAR", href: "https://x.com/", icon: XIcon },
-  { label: "انستغرام", handle: "@googledev.ar", href: "https://instagram.com/", icon: Instagram },
-  { label: "لينكدإن", handle: "Google Developer", href: "https://linkedin.com/", icon: Linkedin },
-  { label: "واتساب", handle: "مجموعة المجتمع", href: "https://wa.me/", icon: MessageCircle },
-  { label: "تيليجرام", handle: "قناة الإعلانات", href: "https://t.me/", icon: Send },
-  { label: "يوتيوب", handle: "ورش مسجّلة", href: "https://youtube.com/", icon: Youtube },
+  { label: "واتساب", handle: "مجموعة المجتمع", href: "https://chat.whatsapp.com/IRHXy5NxyiZLbHUxQrQymw", icon: MessageCircle },
+  { label: "تيك توك", handle: "@googledev.ar", href: "https://tiktok.com/", icon: TikTokIcon },
 ] as const;
 
 function XIcon({ className }: { className?: string }) {
