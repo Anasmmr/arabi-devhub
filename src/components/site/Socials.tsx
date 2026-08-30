@@ -1,18 +1,14 @@
-import { Instagram, Linkedin, MessageCircle, Send, Youtube } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 export const socials = [
-  { label: "X / تويتر", handle: "@GoogleDevAR", href: "https://x.com/", icon: XIcon },
-  { label: "انستغرام", handle: "@googledev.ar", href: "https://instagram.com/", icon: Instagram },
-  { label: "لينكدإن", handle: "Google Developer", href: "https://linkedin.com/", icon: Linkedin },
-  { label: "واتساب", handle: "مجموعة المجتمع", href: "https://wa.me/", icon: MessageCircle },
-  { label: "تيليجرام", handle: "قناة الإعلانات", href: "https://t.me/", icon: Send },
-  { label: "يوتيوب", handle: "ورش مسجّلة", href: "https://youtube.com/", icon: Youtube },
+  { label: "واتساب", handle: "مجموعة المجتمع", href: "https://chat.whatsapp.com/IRHXy5NxyiZLbHUxQrQymw", icon: MessageCircle },
+  { label: "تيك توك", handle: "@googledev.ar", href: "https://tiktok.com/", icon: TikTokIcon },
 ] as const;
 
-function XIcon({ className }: { className?: string }) {
+function TikTokIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" className={className}>
-      <path d="M18.9 2H22l-6.8 7.8L23 22h-6.3l-4.9-6.5L6 22H3l7.2-8.2L2 2h6.4l4.6 6.1L18.9 2Zm-1.1 18h1.7L7.3 3.8H5.5L17.8 20Z" />
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
     </svg>
   );
 }
