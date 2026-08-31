@@ -53,9 +53,13 @@ export function Header() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="glass mt-4 flex items-center justify-between gap-4 rounded-2xl px-4 py-3 shadow-glass sm:px-5">
             <Link to="/" className="flex items-center gap-2.5">
-              <span className="font-num grid size-9 place-items-center rounded-xl bg-primary text-sm font-bold text-primary-foreground shadow-md shadow-primary/30">
-                G
-              </span>
+              <img
+                src={logoAsset.url}
+                alt="Google Developer"
+                width={36}
+                height={36}
+                className="size-9 shrink-0 rounded-xl object-contain"
+              />
               <span className="leading-tight">
                 <span className="block text-[15px] font-bold text-foreground">
                   Google Developer
