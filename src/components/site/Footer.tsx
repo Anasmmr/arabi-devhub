@@ -9,9 +9,13 @@ export function Footer() {
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             <div className="sm:col-span-2 lg:col-span-1">
               <div className="flex items-center gap-2.5">
-                <span className="font-num grid size-9 place-items-center rounded-xl bg-primary text-sm font-bold text-primary-foreground">
-                  G
-                </span>
+                <img
+                  src={logoAsset.url}
+                  alt="Google Developer"
+                  width={36}
+                  height={36}
+                  className="size-9 shrink-0 rounded-xl object-contain"
+                />
                 <p className="font-bold text-foreground">Google Developer</p>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
