@@ -68,7 +68,8 @@ function Home() {
                 <ArrowLeft className="size-4" />
               </Link>
               <Link
-                to="/auth"
+                to="/"
+                hash="socials"
                 className="glass inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-foreground shadow-glass transition-transform hover:-translate-y-0.5"
               >
                 الانضمام إلينا
@@ -231,7 +232,7 @@ function Home() {
       </Section>
 
       {/* 4. Club social accounts */}
-      <Section>
+      <Section id="socials">
         <SectionHead
           eyebrow="حسابات النادي"
           title="تابعنا وانضم للنقاش"
