@@ -66,7 +66,7 @@ export async function fetchStats() {
   ]);
   return {
     // إجمالي أعضاء المجتمع
-    members: 1580,
+    members: "1,580",
     certificates: "+300",
     completions: 1860 + (coursesDone.count ?? 0),
     courses: courses.count ?? 0,
