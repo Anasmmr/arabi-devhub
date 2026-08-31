@@ -65,8 +65,8 @@ export async function fetchStats() {
     sb.from("courses").select("id", { count: "exact", head: true }),
   ]);
   return {
-    // إجمالي أعضاء المجتمع: 823 + 46 + 21 + 184
-    members: 1074,
+    // إجمالي أعضاء المجتمع
+    members: 1580,
     certificates: 3200 + (certificates.count ?? 0),
     completions: 1860 + (coursesDone.count ?? 0),
     courses: courses.count ?? 0,
