@@ -77,7 +77,7 @@ function Home() {
             </div>
             <dl className="mt-9 grid max-w-lg grid-cols-3 gap-3">
               <StatCard value={stats.members} label="عضو في المجتمع" />
-              <StatCard value={stats.certificates} label="شهادة صادرة" />
+              <StatCard value={stats.certificates} label="شهادات صادرة" />
               <StatCard value={stats.completions} label="دورة مكتملة" />
             </dl>
           </div>
