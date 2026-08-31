@@ -60,11 +60,22 @@ export function Progress({ percent, className = "" }: { percent: number; classNa
 }
 
 export function StatCard({ value, label }: { value: number | string; label: string }) {
+  const renderValue = () => {
+    if (typeof value === "number") return <span>{arabicNumber(value)}</span>;
+    const match = value.match(/^([+\-]?)(\d+)([+\-]?)$/);
+    if (!match) return <span>{value}</span>;
+    const [, prefix, digits, suffix] = match;
+    return (
+      <>
+        {prefix && <span>{prefix}</span>}
+        <span className="font-num">{digits}</span>
+        {suffix && <span>{suffix}</span>}
+      </>
+    );
+  };
   return (
     <div className="glass rounded-2xl p-5 text-center shadow-glass">
-      <p className="font-num text-2xl font-bold text-primary sm:text-3xl">
-        {typeof value === "number" ? arabicNumber(value) : value}
-      </p>
+      <p className="text-2xl font-bold text-primary sm:text-3xl">{renderValue()}</p>
       <p className="mt-1 text-xs text-muted-foreground sm:text-sm">{label}</p>
     </div>
   );
