@@ -48,11 +48,13 @@ function DepartmentPage() {
     mutationFn: (courseId: string) => complete({ data: { courseId } }),
     onSuccess: (res) => {
       queryClient.invalidateQueries({ queryKey: ["dashboard"] });
-      if (res.already_completed) toast.info("هذه الدورة مسجّلة مسبقًا في حسابك.");
-      else
+      if (res.points_awarded > 0) {
         toast.success(
           `أُضيفت ${arabicNumber(res.points_awarded)} نقطة وصدرت شهادتك (${res.certificate_serial})`,
         );
+      } else if (res.already_completed) {
+        toast.info("هذه الدورة مسجّلة مسبقًا في حسابك.");
+      }
     },
     onError: () => toast.error("تعذّر تسجيل الإكمال، حاول مرة أخرى."),
   });
