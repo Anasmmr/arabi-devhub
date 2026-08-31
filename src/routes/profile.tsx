@@ -112,8 +112,7 @@ function ProfilePage() {
           <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
             <StatCard value={data.profile.total_points} label="نقطة" />
             <StatCard value={`#${arabicNumber(data.rank)}`} label="الترتيب" />
-            <StatCard value="+1300" label="عدد المستفيدين" />
-            <StatCard value={data.certificates.length} label="شهادة" />
+            <StatCard value="+300" label="شهادات صادرة" />
           </div>
         </div>
       </Section>
