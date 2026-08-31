@@ -59,8 +59,7 @@ export async function fetchFounders() {
 
 export async function fetchStats() {
   const sb = publicClient();
-  const [members, certificates, coursesDone, courses] = await Promise.all([
-    sb.from("profiles").select("id", { count: "exact", head: true }),
+  const [certificates, coursesDone, courses] = await Promise.all([
     sb.from("certificates").select("id", { count: "exact", head: true }),
     sb.from("course_completions").select("id", { count: "exact", head: true }),
     sb.from("courses").select("id", { count: "exact", head: true }),
