@@ -105,7 +105,7 @@ function ProfilePage() {
             <div>
               <h1 className="text-2xl font-bold text-foreground">{data.profile.full_name}</h1>
               <p className="mt-1 text-sm text-muted-foreground">
-                {data.profile.headline || "عضو في مجتمع Google Developer"}
+                {data.profile.headline || "عضو ب المجتمع 1587"}
               </p>
             </div>
           </div>
