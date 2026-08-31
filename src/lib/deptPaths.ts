@@ -55,6 +55,14 @@ export const deptPaths: Record<string, ExternalPath[]> = {
       url: "https://www.netacad.com/ar/career-paths/cybersecurity?courseLang=ar-SA",
     },
   ],
+  uiux: [
+    {
+      title: "مسار تعلم UI/UX",
+      provider: "منصة سطر — طويق",
+      description: "مسار متكامل بالعربية لتعلم أساسيات تصميم تجربة المستخدم وواجهات الاستخدام من البحث حتى النموذج التفاعلي.",
+      url: "https://satr.tuwaiq.edu.sa/path/JswbScYqpw/view",
+    },
+  ],
 };
 
 export const deptPath = (slug: string) => deptPaths[slug] ?? [];
