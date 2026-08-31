@@ -113,7 +113,7 @@ function ProfilePage() {
             <StatCard value={data.profile.total_points} label="نقطة" />
             <StatCard value={`#${arabicNumber(data.rank)}`} label="الترتيب" />
             <StatCard value="+1300" label="عدد المستفيدين" />
-            <StatCard value="+300" label="شهادات صادرة" />
+            <StatCard value="300+" label="شهادات صادرة" />
           </div>
         </div>
       </Section>
