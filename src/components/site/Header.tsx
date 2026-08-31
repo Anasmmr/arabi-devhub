@@ -6,6 +6,7 @@ import { Home, LayoutGrid, Trophy, User, Menu, X, LogOut, ShieldCheck } from "lu
 import { supabase } from "@/integrations/supabase/client";
 import { useSession } from "@/hooks/useSession";
 import { getMyRoles } from "@/lib/admin.functions";
+import logoAsset from "@/assets/google-developers-logo.svg.asset.json";
 
 
 const links = [
