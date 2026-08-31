@@ -71,7 +71,7 @@ function Home() {
                 to="/auth"
                 className="glass inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-foreground shadow-glass transition-transform hover:-translate-y-0.5"
               >
-                أنشئ حسابك
+                الانضمام إلينا
               </Link>
             </div>
             <dl className="mt-9 grid max-w-lg grid-cols-3 gap-3">
