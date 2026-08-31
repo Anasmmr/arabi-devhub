@@ -68,7 +68,8 @@ function Home() {
                 <ArrowLeft className="size-4" />
               </Link>
               <Link
-                to="/#socials"
+                to="/"
+                hash="socials"
                 className="glass inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-foreground shadow-glass transition-transform hover:-translate-y-0.5"
               >
                 الانضمام إلينا
