@@ -156,24 +156,25 @@ export function Header() {
       {/* Mobile bottom navigation */}
       <nav className="fixed inset-x-0 bottom-0 z-50 lg:hidden">
         <div className="glass mx-3 mb-3 grid grid-cols-4 gap-1 rounded-2xl p-1.5 shadow-glass-lg">
-          {mobileTabs.map((t) => {
-            const active = t.to === "/" ? pathname === "/" : pathname.startsWith(t.to);
-            const Icon = t.icon;
-            return (
-              <Link
-                key={t.to}
-                to={t.to}
-                className={
-                  active
-                    ? "flex flex-col items-center gap-1 rounded-xl bg-primary/10 py-2 text-[11px] font-semibold text-primary"
-                    : "flex flex-col items-center gap-1 rounded-xl py-2 text-[11px] text-muted-foreground"
-                }
-              >
-                <Icon className="size-5" />
-                {t.label}
-              </Link>
-            );
-          })}
+           {mobileTabs.map((t) => {
+             if (!t) return null;
+             const active = t.to === "/" ? pathname === "/" : pathname.startsWith(t.to);
+             const Icon = t.icon;
+             return (
+               <Link
+                 key={t.to}
+                 to={t.to}
+                 className={
+                   active
+                     ? "flex flex-col items-center gap-1 rounded-xl bg-primary/10 py-2 text-[11px] font-semibold text-primary"
+                     : "flex flex-col items-center gap-1 rounded-xl py-2 text-[11px] text-muted-foreground"
+                 }
+               >
+                 <Icon className="size-5" />
+                 {t.label}
+               </Link>
+             );
+           })}
         </div>
       </nav>
     </>
