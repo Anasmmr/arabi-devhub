@@ -84,7 +84,9 @@ function DepartmentPage() {
               ? "border-t-4 border-dept-ai/40 bg-dept-ai/5"
               : department.slug === "security"
                 ? "border-t-4 border-dept-security/40 bg-dept-security/5"
-                : ""
+                : department.slug === "app"
+                  ? "border-t-4 border-dept-app/40 bg-dept-app/5"
+                  : ""
           }`}
         >
           <img
