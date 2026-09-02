@@ -11,7 +11,7 @@ import logoAsset from "@/assets/google-developers-logo.svg.asset.json";
 
 const links = [
   { to: "/", label: "الرئيسية" },
-  { to: "/departments", label: "المسارات" },
+  { to: "/departments", label: "Pathways Game" },,
   { to: "/leaderboard", label: "لوحة الصدارة" },
   { to: "/profile", label: "حسابي" },
   { to: "/about", label: "عن النادي" },
@@ -20,7 +20,7 @@ const links = [
 
 const mobileTabs = [
   { to: "/", label: "الرئيسية", icon: Home },
-  { to: "/departments", label: "المسارات", icon: LayoutGrid },
+  { to: "/departments", label: "Pathways Game", icon: LayoutGrid },,
   { to: "/leaderboard", label: "الصدارة", icon: Trophy },
   { to: "/profile", label: "حسابي", icon: User },
 ] as const;

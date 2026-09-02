@@ -178,10 +178,10 @@ function Home() {
         </div>
       </Section>
 
-      {/* 3. Departments */}
+      {/* 3. Pathways Game */}
       <Section>
         <SectionHead
-          eyebrow="لعبة المسارات"
+          eyebrow="Pathways Game"
           title="أربعة مسارات، لعبة تعلّم واضحة لكل مسار"
           subtitle="كل مسار يحتوي على خطة تعلّم متدرّجة ودورات عملية تُمنح عليها نقاط وشهادة."
         />
