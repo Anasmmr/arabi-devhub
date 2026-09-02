@@ -112,10 +112,18 @@
 }
 
 @utility glass {
-  background-color: color-mix(in oklab, var(--glass) 70%, transparent);
-  backdrop-filter: blur(20px);
+  background-color: color-mix(in oklab, var(--glass) 82%, transparent);
   border: 1px solid var(--glass-border);
 }
+
+/* التمويه الزجاجي مكلف على الأجهزة الضعيفة: نطبّقه فقط على الشاشات الكبيرة */
+@media (min-width: 1024px) {
+  .glass {
+    background-color: color-mix(in oklab, var(--glass) 72%, transparent);
+    backdrop-filter: blur(12px);
+  }
+}
+
 
 @utility glass-soft {
   background-color: color-mix(in oklab, var(--glass) 70%, transparent);
