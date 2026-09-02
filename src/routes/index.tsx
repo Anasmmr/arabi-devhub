@@ -181,7 +181,7 @@ function Home() {
       {/* 3. Pathways Game */}
       <Section>
         <SectionHead
-          eyebrow="Pathways Game"
+          eyebrow="لعبة المسارات"
           title="أربعة مسارات، لعبة تعلّم واضحة لكل مسار"
           subtitle="كل مسار يحتوي على خطة تعلّم متدرّجة ودورات عملية تُمنح عليها نقاط وشهادة."
         />
