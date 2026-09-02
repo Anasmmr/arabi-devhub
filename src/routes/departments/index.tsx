@@ -1,5 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, BookOpen } from "lucide-react";
+import {
+  ArrowLeft,
+  Award,
+  BookOpen,
+  Gamepad2,
+  Medal,
+  Share2,
+  Sparkles,
+  Trophy,
+  Users,
+} from "lucide-react";
 import { getDepartments } from "@/lib/community.functions";
 import { Section, SectionHead } from "@/components/site/Bits";
 import { DeptIcon } from "@/components/site/DeptIcon";
