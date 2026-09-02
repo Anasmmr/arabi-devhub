@@ -43,7 +43,17 @@ export function accentStyle(accent: string): AccentStyle {
   return styles[(accent as Accent) in styles ? (accent as Accent) : "brand"];
 }
 
-export const arabicNumber = (n: number) => new Intl.NumberFormat("ar-EG").format(n);
+export const arabicNumber = (n: number) => new Intl.NumberFormat("en-US").format(n);
+
+const easternDigits = "٠١٢٣٤٥٦٧٨٩";
+const westernDigits = "0123456789";
+const toLatinDigits = (s: string) =>
+  s
+    .split("")
+    .map((c) => westernDigits[easternDigits.indexOf(c)] ?? c)
+    .join("");
 
 export const arabicDate = (iso: string) =>
-  new Intl.DateTimeFormat("ar-EG", { dateStyle: "long" }).format(new Date(iso));
+  toLatinDigits(
+    new Intl.DateTimeFormat("ar-EG", { dateStyle: "long" }).format(new Date(iso)),
+  );
