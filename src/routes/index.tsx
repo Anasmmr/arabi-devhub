@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "نادي Google Developer: تعريف بالنادي وإنجازاته، أقسام تعلّم في الذكاء الاصطناعي والتطبيقات والأمن السيبراني وتصميم الواجهات، مع نقاط وشهادات ولوحة صدارة.",
+          "نادي Google Developer: تعريف بالنادي وإنجازاته، مسارات تعلّم في الذكاء الاصطناعي والتطبيقات والأمن السيبراني وتصميم الواجهات، مع نقاط وشهادات ولوحة صدارة.",
       },
       { property: "og:title", content: "Google Developer — مجتمع المطورين العربي" },
       {
@@ -56,7 +56,7 @@ function Home() {
               وتقدّم بنقاط وشهادات حقيقية
             </h1>
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              نادي Google Developer يجمع المطوّرين في الشرق الأوسط حول أقسام متخصصة، مسارات تعلّم
+              نادي Google Developer يجمع المطوّرين في الشرق الأوسط حول مسارات متخصصة، خطط تعلّم
               منظّمة، ونظام نقاط يحوّل تعلّمك إلى تقدّم ملموس تراه في ملفك ولوحة الصدارة.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
