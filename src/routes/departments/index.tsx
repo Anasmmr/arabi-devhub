@@ -10,13 +10,13 @@ export const Route = createFileRoute("/departments/")({
   loader: () => getDepartments(),
   head: () => ({
     meta: [
-      { title: "Pathways Game — Google Developer" },
+      { title: "لعبة المسارات — Google Developer" },
       {
         name: "description",
         content:
           "مسارات النادي: الذكاء الاصطناعي، تطوير التطبيقات، الأمن السيبراني، وتصميم واجهات المستخدم — لكل مسار خطة تعلّم ودورات ونقاط وشهادات.",
       },
-      { property: "og:title", content: "Pathways Game — Google Developer" },
+      { property: "og:title", content: "لعبة المسارات — Google Developer" },
       {
         property: "og:description",
         content: "اختر مسارك وابدأ رحلة التعلّم مع دورات عملية ونقاط وشهادات موثّقة.",
@@ -33,7 +33,7 @@ function Departments() {
     <main>
       <Section className="pt-8 sm:pt-12">
         <SectionHead
-          eyebrow="Pathways Game"
+          eyebrow="لعبة المسارات"
           title="اختر مسارك وابدأ اللعبة"
           subtitle="كل مسار يبدأ من الأساسيات ويتدرّج نحو مشاريع تطبيقية، مع نقاط وشهادة لكل دورة."
         />
