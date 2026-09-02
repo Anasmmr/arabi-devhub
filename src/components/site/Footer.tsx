@@ -32,7 +32,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link to="/departments" className="transition-colors hover:text-primary">
-                    الأقسام
+                    Pathways Game
                   </Link>
                 </li>
                 <li>
@@ -48,7 +48,7 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <p className="text-sm font-semibold text-foreground">الأقسام</p>
+              <p className="text-sm font-semibold text-foreground">Pathways Game</p>
               <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
                 <li>
                   <Link

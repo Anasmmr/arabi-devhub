@@ -11,7 +11,7 @@ import logoAsset from "@/assets/google-developers-logo.svg.asset.json";
 
 const links = [
   { to: "/", label: "الرئيسية" },
-  { to: "/departments", label: "الأقسام" },
+  { to: "/departments", label: "Pathways Game" },
   { to: "/leaderboard", label: "لوحة الصدارة" },
   { to: "/profile", label: "حسابي" },
   { to: "/about", label: "عن النادي" },
@@ -20,7 +20,7 @@ const links = [
 
 const mobileTabs = [
   { to: "/", label: "الرئيسية", icon: Home },
-  { to: "/departments", label: "الأقسام", icon: LayoutGrid },
+  { to: "/departments", label: "Pathways Game", icon: LayoutGrid },
   { to: "/leaderboard", label: "الصدارة", icon: Trophy },
   { to: "/profile", label: "حسابي", icon: User },
 ] as const;
@@ -70,6 +70,7 @@ export function Header() {
 
             <nav className="hidden items-center gap-1 text-sm lg:flex">
               {links.map((l) => {
+                if (!l) return null;
                 const active = l.to === "/" ? pathname === "/" : pathname.startsWith(l.to);
                 return (
                   <Link
@@ -134,16 +135,19 @@ export function Header() {
 
           {open && (
             <div className="glass reveal mt-2 rounded-2xl p-2 shadow-glass lg:hidden">
-              {links.map((l) => (
-                <Link
-                  key={l.to}
-                  to={l.to}
-                  onClick={() => setOpen(false)}
-                  className="block rounded-xl px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-primary/10 hover:text-primary"
-                >
-                  {l.label}
-                </Link>
-              ))}
+              {links.map((l) => {
+                if (!l) return null;
+                return (
+                  <Link
+                    key={l.to}
+                    to={l.to}
+                    onClick={() => setOpen(false)}
+                    className="block rounded-xl px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-primary/10 hover:text-primary"
+                  >
+                    {l.label}
+                  </Link>
+                );
+              })}
             </div>
           )}
         </div>
@@ -152,24 +156,25 @@ export function Header() {
       {/* Mobile bottom navigation */}
       <nav className="fixed inset-x-0 bottom-0 z-50 lg:hidden">
         <div className="glass mx-3 mb-3 grid grid-cols-4 gap-1 rounded-2xl p-1.5 shadow-glass-lg">
-          {mobileTabs.map((t) => {
-            const active = t.to === "/" ? pathname === "/" : pathname.startsWith(t.to);
-            const Icon = t.icon;
-            return (
-              <Link
-                key={t.to}
-                to={t.to}
-                className={
-                  active
-                    ? "flex flex-col items-center gap-1 rounded-xl bg-primary/10 py-2 text-[11px] font-semibold text-primary"
-                    : "flex flex-col items-center gap-1 rounded-xl py-2 text-[11px] text-muted-foreground"
-                }
-              >
-                <Icon className="size-5" />
-                {t.label}
-              </Link>
-            );
-          })}
+           {mobileTabs.map((t) => {
+             if (!t) return null;
+             const active = t.to === "/" ? pathname === "/" : pathname.startsWith(t.to);
+             const Icon = t.icon;
+             return (
+               <Link
+                 key={t.to}
+                 to={t.to}
+                 className={
+                   active
+                     ? "flex flex-col items-center gap-1 rounded-xl bg-primary/10 py-2 text-[11px] font-semibold text-primary"
+                     : "flex flex-col items-center gap-1 rounded-xl py-2 text-[11px] text-muted-foreground"
+                 }
+               >
+                 <Icon className="size-5" />
+                 {t.label}
+               </Link>
+             );
+           })}
         </div>
       </nav>
     </>

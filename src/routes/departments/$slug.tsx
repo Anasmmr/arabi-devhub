@@ -10,6 +10,7 @@ import { Progress, Section } from "@/components/site/Bits";
 import { DeptIcon } from "@/components/site/DeptIcon";
 import { deptImage } from "@/lib/deptImages";
 import { deptPath } from "@/lib/deptPaths";
+import { deptPillars } from "@/lib/deptPillars";
 import { accentStyle, arabicDate, arabicNumber } from "@/lib/dept";
 
 export const Route = createFileRoute("/departments/$slug")({
@@ -21,15 +22,15 @@ export const Route = createFileRoute("/departments/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [{ title: "قسم غير متاح — Google Developer" }, { name: "robots", content: "noindex" }],
+        meta: [{ title: "مسار غير متاح — Google Developer" }, { name: "robots", content: "noindex" }],
       };
     }
     const d = loaderData.department;
     return {
       meta: [
-        { title: `قسم ${d.name_ar} — Google Developer` },
+        { title: `مسار ${d.name_ar} — Google Developer` },
         { name: "description", content: d.short_description_ar },
-        { property: "og:title", content: `قسم ${d.name_ar} — Google Developer` },
+        { property: "og:title", content: `مسار ${d.name_ar} — Google Developer` },
         { property: "og:description", content: d.short_description_ar },
       ],
     };
@@ -69,6 +70,7 @@ function DepartmentPage() {
     ? Math.round((completedCount / department.courses.length) * 100)
     : 0;
   const paths = deptPath(department.slug);
+  const pillars = deptPillars(department.slug);
   const totalPossiblePoints = department.courses.reduce((sum, c) => sum + c.points + 500, 0);
 
 
@@ -79,7 +81,7 @@ function DepartmentPage() {
         <div className="glass overflow-hidden rounded-3xl shadow-glass-lg">
           <img
             src={deptImage(department.slug)}
-            alt={`قسم ${department.name_ar}`}
+            alt={`مسار ${department.name_ar}`}
             width={900}
             height={600}
             className="h-40 w-full object-cover sm:h-56"
@@ -91,7 +93,7 @@ function DepartmentPage() {
               </span>
               <div>
                 <h1 className="text-2xl font-bold text-foreground sm:text-3xl">
-                  قسم {department.name_ar}
+                  مسار {department.name_ar}
                 </h1>
                 <p className="font-num text-xs tracking-wide text-muted-foreground uppercase">
                   {department.name_en}
@@ -103,7 +105,7 @@ function DepartmentPage() {
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-3">
               <div className="glass-soft rounded-2xl p-4">
-                <p className="text-xs text-muted-foreground">دورات القسم</p>
+                <p className="text-xs text-muted-foreground">دورات المسار</p>
                 <p className="font-num mt-1 text-xl font-bold text-foreground">
                   {arabicNumber(department.courses.length)}
                 </p>
@@ -115,7 +117,7 @@ function DepartmentPage() {
                 </p>
               </div>
               <div className="glass-soft rounded-2xl p-4">
-                <p className="text-xs text-muted-foreground">نقاط القسم</p>
+                <p className="text-xs text-muted-foreground">نقاط المسار</p>
                 <p className="font-num mt-1 text-xl font-bold text-primary">
                   {arabicNumber(progress?.points ?? 0)}
                 </p>
@@ -125,6 +127,27 @@ function DepartmentPage() {
         </div>
       </Section>
 
+      {/* Pathway pillars */}
+      {pillars.length > 0 && (
+        <Section className="pt-0">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {pillars.map((p) => (
+              <div
+                key={p.key}
+                className={`glass rounded-2xl border-t-2 p-5 shadow-glass transition-transform duration-500 hover:-translate-y-1 ${a.border}`}
+              >
+                <span
+                  className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-bold ${a.soft} ${a.text}`}
+                >
+                  {p.label}
+                </span>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+      )}
+
       {/* External learning paths + points counter */}
       {paths.length > 0 && (
         <Section className="pt-0">
@@ -132,21 +155,21 @@ function DepartmentPage() {
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-2">
                 <Trophy className="size-5 text-gold" />
-                <h2 className="text-lg font-bold text-foreground sm:text-xl">عدّاد نقاط المجموعة</h2>
+                <h2 className="text-lg font-bold text-foreground sm:text-xl">عدّاد نقاط المسار</h2>
               </div>
               <div className="glass-soft flex items-center gap-4 rounded-2xl px-5 py-3">
                 <div className="text-center">
                   <p className="font-num text-2xl font-bold text-primary sm:text-3xl">
                     {arabicNumber(progress?.points ?? 0)}
                   </p>
-                  <p className="mt-0.5 text-[11px] text-muted-foreground">نقاطك في القسم</p>
+                  <p className="mt-0.5 text-[11px] text-muted-foreground">نقاطك في المسار</p>
                 </div>
                 <span className="h-8 w-px bg-border" aria-hidden />
                 <div className="text-center">
                   <p className="font-num text-2xl font-bold text-foreground sm:text-3xl">
                     {arabicNumber(totalPossiblePoints)}
                   </p>
-                  <p className="mt-0.5 text-[11px] text-muted-foreground">إجمالي نقاط القسم</p>
+                  <p className="mt-0.5 text-[11px] text-muted-foreground">إجمالي نقاط المسار</p>
                 </div>
               </div>
             </div>
@@ -314,11 +337,11 @@ function DepartmentPage() {
           <div className="glass rounded-2xl p-6 shadow-glass">
             <div className="flex items-center gap-2">
               <Award className="size-5 text-primary" />
-              <h2 className="text-lg font-bold text-foreground">شهادات هذا القسم</h2>
+              <h2 className="text-lg font-bold text-foreground">شهادات هذا المسار</h2>
             </div>
             {certificates.length === 0 ? (
               <p className="mt-4 text-sm text-muted-foreground">
-                لا توجد شهادات بعد — أكمل أول دورة في القسم لتصدر شهادتك تلقائيًا.
+                لا توجد شهادات بعد — أكمل أول دورة في المسار لتصدر شهادتك تلقائيًا.
               </p>
             ) : (
               <ul className="mt-4 space-y-2.5">
@@ -337,15 +360,15 @@ function DepartmentPage() {
           <div className="glass rounded-2xl p-6 shadow-glass">
             <div className="flex items-center gap-2">
               <Trophy className="size-5 text-gold" />
-              <h2 className="text-lg font-bold text-foreground">نقاطك من القسم</h2>
+              <h2 className="text-lg font-bold text-foreground">نقاطك من المسار</h2>
             </div>
             <p className="font-num mt-4 text-4xl font-bold text-primary">
               {arabicNumber(progress?.points ?? 0)}
             </p>
             <p className="mt-2 text-sm text-muted-foreground">
               {user
-                ? `أكملت ${arabicNumber(completedCount)} من ${arabicNumber(department.courses.length)} دورة في هذا القسم.`
-                : "سجّل الدخول لعرض نقاطك وتقدّمك في هذا القسم."}
+                ? `أكملت ${arabicNumber(completedCount)} من ${arabicNumber(department.courses.length)} دورة في هذا المسار.`
+                : "سجّل الدخول لعرض نقاطك وتقدّمك في هذا المسار."}
             </p>
             <Link
               to="/profile"
