@@ -140,37 +140,94 @@ function DepartmentPage() {
       </Section>
 
       {/* تعريف المسار */}
-      {pillars.length > 0 && (
-        <Section className="pt-0">
-          <div className="mb-5">
+      <Section className="pt-0">
+        <div
+          className={`glass overflow-hidden rounded-3xl p-6 shadow-glass-lg sm:p-8 ${
+            department.slug === "ai"
+              ? "border-t-4 border-dept-ai/40 bg-dept-ai/5"
+              : department.slug === "security"
+                ? "border-t-4 border-dept-security/40 bg-dept-security/5"
+                : department.slug === "app"
+                  ? "border-t-4 border-dept-app/40 bg-dept-app/5"
+                  : department.slug === "uiux"
+                    ? "border-t-4 border-dept-uiux/40 bg-dept-uiux/5"
+                    : ""
+          }`}
+        >
+          <div className="flex items-center gap-2">
+            <Gamepad2 className={`size-6 ${a.text}`} />
             <h2 className="text-xl font-bold text-foreground sm:text-2xl">تعريف المسار</h2>
-            <p className="mt-1 text-sm text-muted-foreground">
-              رسالة مسار {department.name_ar} وأهدافه الأربعة.
-            </p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {pillars.map((p) => (
-              <div
-                key={p.key}
-                className={`glass rounded-2xl border-t-2 p-5 shadow-glass transition-transform duration-500 hover:-translate-y-1 ${a.border} ${
-                  department.slug === "ai"
-                    ? "bg-dept-ai/5"
-                    : department.slug === "security"
-                      ? "bg-dept-security/5"
-                      : ""
-                }`}
-              >
-                <span
-                  className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-bold ${a.soft} ${a.text}`}
-                >
-                  {p.label}
-                </span>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
+
+          <div className="mt-6 grid gap-5 lg:grid-cols-2">
+            {/* قوانين اللعبة */}
+            <div className="glass rounded-2xl p-5 shadow-glass">
+              <div className="flex items-center gap-2">
+                <Trophy className={`size-5 ${a.text}`} />
+                <h3 className="text-base font-bold text-foreground sm:text-lg">قوانين اللعبة</h3>
               </div>
-            ))}
+              <ul className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+                <li className="flex items-start gap-2.5">
+                  <span className={`mt-2 size-1.5 shrink-0 rounded-full ${a.bg}`} />
+                  اجمع أكبر عدد من النقاط لتفوز بجوائز قيمة آخر السنة.
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className={`mt-2 size-1.5 shrink-0 rounded-full ${a.bg}`} />
+                  ادفع فريقك نحو الفوز بتقديم فعاليات لمسارك وكسب النقاط.
+                </li>
+              </ul>
+            </div>
+
+            {/* نظام النقاط */}
+            <div className="glass rounded-2xl p-5 shadow-glass">
+              <div className="flex items-center gap-2">
+                <Medal className={`size-5 ${a.text}`} />
+                <h3 className="text-base font-bold text-foreground sm:text-lg">نظام النقاط</h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                كل مسار له عدد من الدورات، كل دورة لها 50 نقطة عند الإتمام.
+              </p>
+              <div
+                className={`mt-4 rounded-2xl border border-dashed p-4 ${a.border} bg-background/50`}
+              >
+                <p className="text-xs font-semibold text-foreground">مثال من الواجهة:</p>
+                <p className="mt-1 text-sm text-muted-foreground">مسار أساسيات الأمن السيبراني</p>
+                <p className="font-num mt-1 text-sm font-bold text-primary">
+                  مجموع مسار الأمن السيبراني عند الإتمام 680 نقطة
+                </p>
+              </div>
+            </div>
           </div>
-        </Section>
-      )}
+
+          {/* شرح النقاط */}
+          <div className="mt-5 glass rounded-2xl p-5 shadow-glass">
+            <div className="flex items-center gap-2">
+              <Share2 className={`size-5 ${a.text}`} />
+              <h3 className="text-base font-bold text-foreground sm:text-lg">شرح النقاط</h3>
+            </div>
+            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+              <li className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground">
+                <Users className={`mt-0.5 size-4 shrink-0 ${a.text}`} />
+                نهاية كل شهر أكثر فريق تفاعل وأنجز مهمات أكثر من الباقي بياخذ 100 نقطة إضافية على
+                مجموع نقاطهم.
+              </li>
+              <li className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground">
+                <Share2 className={`mt-0.5 size-4 shrink-0 ${a.text}`} />
+                عند إتمام قسم أو دورة أو مسار أو مشروع شارك إنجازك في X على #مطورين_المستقبل لتكسب 5
+                نقاط إضافية.
+              </li>
+              <li className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground">
+                <Award className={`mt-0.5 size-4 shrink-0 ${a.text}`} />
+                قيامك بمشروع عند الإنتهاء من دورة او مسار تكسب 20 نقطة إضافية.
+              </li>
+              <li className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground">
+                <Sparkles className={`mt-0.5 size-4 shrink-0 ${a.text}`} />
+                عند مشاركتك مع بوت قوقي في كويز تكسب 10 نقاط.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </Section>
 
       {/* External learning paths + points counter */}
       {paths.length > 0 && (
