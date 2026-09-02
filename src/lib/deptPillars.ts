@@ -50,19 +50,19 @@ const pillars: Record<string, Pillar[]> = {
   uiux: [
     {
       key: "learn",
-      label: "نتعلّم",
-      body: "تعلّم أساسيات تصميم تجربة وواجهة المستخدم وإتقان أدواته وفهم سلوك المستخدم.",
+      label: "Learn",
+      body: "UI/UX design fundamentals, mastering its tools, and understanding user behavior.",
     },
-    { key: "apply", label: "نطبّق", body: "بناء أنظمة تصميم كاملة ونماذج أولية." },
+    { key: "apply", label: "Apply", body: "We build complete design systems and prototypes." },
     {
       key: "publish",
-      label: "ننشر",
-      body: "تنظيم ورش ولقاءات متخصصة في تصميم تجربة وواجهة المستخدم.",
+      label: "Publish",
+      body: "Workshops and events specialized in UI/UX design.",
     },
     {
       key: "enable",
-      label: "نُمكّن",
-      body: "تهيئة أعضائنا لإنشاء ملف أعمال احترافي جاهز لسوق العمل.",
+      label: "Enable",
+      body: "Our members to prepare a professional portfolio ready for the job market.",
     },
   ],
 };
