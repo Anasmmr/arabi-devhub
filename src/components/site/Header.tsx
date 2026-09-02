@@ -70,6 +70,7 @@ export function Header() {
 
             <nav className="hidden items-center gap-1 text-sm lg:flex">
               {links.map((l) => {
+                if (!l) return null;
                 const active = l.to === "/" ? pathname === "/" : pathname.startsWith(l.to);
                 return (
                   <Link
