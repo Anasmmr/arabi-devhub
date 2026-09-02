@@ -31,7 +31,7 @@ export const Route = createFileRoute("/")({
 const gallery = clubGallery;
 
 const achievements = [
-  "أكثر من ٦٠ لقاءً وورشة تقنية بحضور مباشر وعن بُعد.",
+  "أكثر من 60 لقاءً وورشة تقنية بحضور مباشر وعن بُعد.",
   "مسارات تعلّم متكاملة في أربعة تخصصات تقنية مطلوبة.",
   "آلاف الشهادات الموثّقة لأعضاء أكملوا دوراتهم بنجاح.",
   "شراكات مع مجتمعات وجامعات في أكثر من مدينة عربية.",
@@ -78,7 +78,7 @@ function Home() {
             <dl className="mt-9 grid max-w-lg grid-cols-3 gap-3">
               <StatCard value={stats.members} label="عضو في المجتمع" />
               <StatCard value={stats.certificates} label="شهادات صادرة" />
-              <StatCard value={stats.completions} label="دورة مكتملة" />
+              <StatCard value="+20" label="دورات مكتملة" />
             </dl>
           </div>
           <div className="reveal overflow-hidden rounded-3xl shadow-glass-lg">
@@ -247,7 +247,7 @@ function Home() {
       <Section>
         <SectionHead
           eyebrow="لوحة الصدارة"
-          title="أعلى ٥ أعضاء بالنقاط"
+          title="أعلى 5 أعضاء بالنقاط"
           subtitle="النقاط تُجمع من إكمال الدورات والتفاعل في مجموعات النادي."
         />
         <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

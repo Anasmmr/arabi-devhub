@@ -40,7 +40,7 @@ function Leaderboard() {
       <Section className="pt-8 sm:pt-12">
         <SectionHead
           eyebrow="لوحة الصدارة"
-          title="أعلى ٥ أعضاء بالنقاط"
+          title="أعلى 5 أعضاء بالنقاط"
           subtitle="النقاط تُحتسب من إكمال الدورات والتفاعل في مجموعات النادي عبر واتساب."
         />
 

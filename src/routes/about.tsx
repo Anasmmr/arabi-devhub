@@ -28,7 +28,7 @@ export const Route = createFileRoute("/about")({
 const gallery = clubGallery;
 
 const achievements = [
-  "أكثر من ٦٠ لقاءً وورشة تقنية بحضور مباشر وعن بُعد.",
+  "أكثر من 60 لقاءً وورشة تقنية بحضور مباشر وعن بُعد.",
   "أربعة مسارات تعلّم متكاملة في تخصصات تقنية مطلوبة.",
   "آلاف الشهادات الموثّقة لأعضاء أكملوا دوراتهم بنجاح.",
   "شراكات مع مجتمعات وجامعات في أكثر من مدينة عربية.",
@@ -79,7 +79,7 @@ function About() {
           <StatCard value={stats.events} label="لقاء" />
           <StatCard value={stats.workshops} label="ورشة" />
           <StatCard value={stats.certificates} label="شهادة" />
-          <StatCard value={stats.completions} label="دورة مكتملة" />
+          <StatCard value="+20" label="دورات مكتملة" />
         </div>
 
         <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
