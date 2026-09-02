@@ -149,7 +149,11 @@ function DepartmentPage() {
               <div
                 key={p.key}
                 className={`glass rounded-2xl border-t-2 p-5 shadow-glass transition-transform duration-500 hover:-translate-y-1 ${a.border} ${
-                  department.slug === "ai" ? "bg-dept-ai/5" : ""
+                  department.slug === "ai"
+                    ? "bg-dept-ai/5"
+                    : department.slug === "security"
+                      ? "bg-dept-security/5"
+                      : ""
                 }`}
               >
                 <span
