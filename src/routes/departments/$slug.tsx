@@ -82,7 +82,9 @@ function DepartmentPage() {
           className={`glass overflow-hidden rounded-3xl shadow-glass-lg ${
             department.slug === "ai"
               ? "border-t-4 border-dept-ai/40 bg-dept-ai/5"
-              : ""
+              : department.slug === "security"
+                ? "border-t-4 border-dept-security/40 bg-dept-security/5"
+                : ""
           }`}
         >
           <img
@@ -147,7 +149,11 @@ function DepartmentPage() {
               <div
                 key={p.key}
                 className={`glass rounded-2xl border-t-2 p-5 shadow-glass transition-transform duration-500 hover:-translate-y-1 ${a.border} ${
-                  department.slug === "ai" ? "bg-dept-ai/5" : ""
+                  department.slug === "ai"
+                    ? "bg-dept-ai/5"
+                    : department.slug === "security"
+                      ? "bg-dept-security/5"
+                      : ""
                 }`}
               >
                 <span
