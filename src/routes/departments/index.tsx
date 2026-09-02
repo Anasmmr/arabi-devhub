@@ -10,13 +10,13 @@ export const Route = createFileRoute("/departments/")({
   loader: () => getDepartments(),
   head: () => ({
     meta: [
-      { title: "Pathways Game — Google Developer" },,
+      { title: "Pathways Game — Google Developer" },
       {
         name: "description",
         content:
           "مسارات النادي: الذكاء الاصطناعي، تطوير التطبيقات، الأمن السيبراني، وتصميم واجهات المستخدم — لكل مسار خطة تعلّم ودورات ونقاط وشهادات.",
       },
-      { property: "og:title", content: "Pathways Game — Google Developer" },,
+      { property: "og:title", content: "Pathways Game — Google Developer" },
       {
         property: "og:description",
         content: "اختر مسارك وابدأ رحلة التعلّم مع دورات عملية ونقاط وشهادات موثّقة.",
