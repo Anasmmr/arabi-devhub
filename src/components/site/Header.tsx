@@ -135,16 +135,19 @@ export function Header() {
 
           {open && (
             <div className="glass reveal mt-2 rounded-2xl p-2 shadow-glass lg:hidden">
-              {links.map((l) => (
-                <Link
-                  key={l.to}
-                  to={l.to}
-                  onClick={() => setOpen(false)}
-                  className="block rounded-xl px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-primary/10 hover:text-primary"
-                >
-                  {l.label}
-                </Link>
-              ))}
+              {links.map((l) => {
+                if (!l) return null;
+                return (
+                  <Link
+                    key={l.to}
+                    to={l.to}
+                    onClick={() => setOpen(false)}
+                    className="block rounded-xl px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-primary/10 hover:text-primary"
+                  >
+                    {l.label}
+                  </Link>
+                );
+              })}
             </div>
           )}
         </div>
