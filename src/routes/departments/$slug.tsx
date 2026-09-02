@@ -133,14 +133,22 @@ function DepartmentPage() {
         </div>
       </Section>
 
-      {/* مراحل المسار */}
+      {/* تعريف المسار */}
       {pillars.length > 0 && (
         <Section className="pt-0">
+          <div className="mb-5">
+            <h2 className="text-xl font-bold text-foreground sm:text-2xl">تعريف المسار</h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              رسالة مسار {department.name_ar} وأهدافه الأربعة.
+            </p>
+          </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {pillars.map((p) => (
               <div
                 key={p.key}
-                className={`glass rounded-2xl border-t-2 p-5 shadow-glass transition-transform duration-500 hover:-translate-y-1 ${a.border}`}
+                className={`glass rounded-2xl border-t-2 p-5 shadow-glass transition-transform duration-500 hover:-translate-y-1 ${a.border} ${
+                  department.slug === "ai" ? "bg-dept-ai/[0.04]" : ""
+                }`}
               >
                 <span
                   className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-bold ${a.soft} ${a.text}`}
