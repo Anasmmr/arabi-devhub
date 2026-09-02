@@ -10,16 +10,16 @@ export const Route = createFileRoute("/departments/")({
   loader: () => getDepartments(),
   head: () => ({
     meta: [
-      { title: "الأقسام — Google Developer" },
+      { title: "لعبة المسارات — Google Developer" },
       {
         name: "description",
         content:
-          "أقسام النادي: الذكاء الاصطناعي، تطوير التطبيقات، الأمن السيبراني، وتصميم واجهات المستخدم — لكل قسم مسار تعلّم ودورات ونقاط وشهادات.",
+          "مسارات النادي: الذكاء الاصطناعي، تطوير التطبيقات، الأمن السيبراني، وتصميم واجهات المستخدم — لكل مسار خطة تعلّم ودورات ونقاط وشهادات.",
       },
-      { property: "og:title", content: "الأقسام — Google Developer" },
+      { property: "og:title", content: "لعبة المسارات — Google Developer" },
       {
         property: "og:description",
-        content: "اختر قسمك وابدأ مسار التعلّم مع دورات عملية ونقاط وشهادات موثّقة.",
+        content: "اختر مسارك وابدأ رحلة التعلّم مع دورات عملية ونقاط وشهادات موثّقة.",
       },
     ],
   }),
@@ -33,9 +33,9 @@ function Departments() {
     <main>
       <Section className="pt-8 sm:pt-12">
         <SectionHead
-          eyebrow="الأقسام"
-          title="اختر القسم الذي يناسب طريقك"
-          subtitle="كل قسم يبدأ من الأساسيات ويتدرّج نحو مشاريع تطبيقية، مع نقاط وشهادة لكل دورة."
+          eyebrow="لعبة المسارات"
+          title="اختر مسارك وابدأ اللعبة"
+          subtitle="كل مسار يبدأ من الأساسيات ويتدرّج نحو مشاريع تطبيقية، مع نقاط وشهادة لكل دورة."
         />
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
           {departments.map((d) => {
@@ -47,7 +47,7 @@ function Departments() {
               >
                 <img
                   src={deptImage(d.slug)}
-                  alt={`قسم ${d.name_ar}`}
+                  alt={`مسار ${d.name_ar}`}
                   loading="lazy"
                   width={900}
                   height={600}
@@ -80,7 +80,7 @@ function Departments() {
                       params={{ slug: d.slug }}
                       className="inline-flex items-center gap-2 rounded-xl bg-ink px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary"
                     >
-                      ادخل القسم
+                      ادخل المسار
                       <ArrowLeft className="size-4" />
                     </Link>
                   </div>

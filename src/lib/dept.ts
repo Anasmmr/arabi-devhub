@@ -6,6 +6,7 @@ type AccentStyle = {
   bar: string;
   ring: string;
   soft: string;
+  border: string;
 };
 
 const styles: Record<Accent, AccentStyle> = {
@@ -15,6 +16,7 @@ const styles: Record<Accent, AccentStyle> = {
     bar: "bg-dept-ai",
     ring: "ring-dept-ai/30",
     soft: "bg-dept-ai/10",
+    border: "border-dept-ai/60",
   },
   sky: {
     text: "text-dept-app",
@@ -22,6 +24,7 @@ const styles: Record<Accent, AccentStyle> = {
     bar: "bg-dept-app",
     ring: "ring-dept-app/30",
     soft: "bg-dept-app/10",
+    border: "border-dept-app/60",
   },
   amber: {
     text: "text-dept-security",
@@ -29,6 +32,7 @@ const styles: Record<Accent, AccentStyle> = {
     bar: "bg-dept-security",
     ring: "ring-dept-security/30",
     soft: "bg-dept-security/10",
+    border: "border-dept-security/60",
   },
   violet: {
     text: "text-dept-uiux",
@@ -36,6 +40,7 @@ const styles: Record<Accent, AccentStyle> = {
     bar: "bg-dept-uiux",
     ring: "ring-dept-uiux/30",
     soft: "bg-dept-uiux/10",
+    border: "border-dept-uiux/60",
   },
 };
 

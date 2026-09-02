@@ -64,7 +64,7 @@ function Home() {
                 to="/departments"
                 className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-colors hover:bg-primary-soft"
               >
-                استكشف الأقسام
+                استكشف المسارات
                 <ArrowLeft className="size-4" />
               </Link>
               <Link
@@ -181,9 +181,9 @@ function Home() {
       {/* 3. Departments */}
       <Section>
         <SectionHead
-          eyebrow="الأقسام"
-          title="أربعة أقسام، مسار واضح لكل واحد"
-          subtitle="كل قسم يحتوي على مسار تعلّم متدرّج ودورات عملية تُمنح عليها نقاط وشهادة."
+          eyebrow="لعبة المسارات"
+          title="أربعة مسارات، لعبة تعلّم واضحة لكل مسار"
+          subtitle="كل مسار يحتوي على خطة تعلّم متدرّجة ودورات عملية تُمنح عليها نقاط وشهادة."
         />
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {departments.map((d) => {
@@ -196,7 +196,7 @@ function Home() {
                 <div className="overflow-hidden">
                   <img
                     src={deptImage(d.slug)}
-                    alt={`قسم ${d.name_ar}`}
+                    alt={`مسار ${d.name_ar}`}
                     loading="lazy"
                     width={900}
                     height={600}
@@ -221,7 +221,7 @@ function Home() {
                     params={{ slug: d.slug }}
                     className="mt-5 inline-flex items-center justify-center gap-2 rounded-xl bg-ink px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary"
                   >
-                    ادخل القسم
+                    ادخل المسار
                     <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
                   </Link>
                 </div>
@@ -304,7 +304,7 @@ function Home() {
         <SectionHead eyebrow="كيف يعمل النظام" title="من التعلّم إلى الشهادة في أربع خطوات" />
         <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { title: "اختر قسمك", body: "أربعة أقسام متخصصة، كل قسم بمسار تعلّم واضح ومتدرّج." },
+            { title: "اختر مسارك", body: "أربعة مسارات متخصصة، كل مسار بخطة تعلّم واضحة ومتدرّجة." },
             { title: "أكمل الدورات", body: "دورات قصيرة عملية على منصة سطر، مع تتبّع تقدّمك." },
             { title: "اجمع النقاط", body: "كل إنجاز يضيف نقاطًا لملفك، وتفاعلك في واتساب يُحتسب." },
             { title: "استلم شهادتك", body: "شهادة موثّقة برقم تسلسلي لكل دورة تُكملها بنجاح." },
