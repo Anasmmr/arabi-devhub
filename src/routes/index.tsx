@@ -191,8 +191,9 @@ function Home() {
             return (
               <article
                 key={d.id}
-                className="glass group flex flex-col overflow-hidden rounded-2xl shadow-glass transition-transform duration-500 hover:-translate-y-1.5"
+                className={`glass group relative flex flex-col overflow-hidden rounded-2xl shadow-glass transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_18px_50px_-18px_var(--dept-${d.slug})]`}
               >
+                <span className={`absolute inset-x-0 top-0 h-1.5 ${a.bg}`} aria-hidden />
                 <div className="overflow-hidden">
                   <img
                     src={deptImage(d.slug)}
@@ -219,7 +220,7 @@ function Home() {
                   <Link
                     to="/departments/$slug"
                     params={{ slug: d.slug }}
-                    className="mt-5 inline-flex items-center justify-center gap-2 rounded-xl bg-ink px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary"
+                    className={`mt-5 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-all ${a.bg} hover:brightness-110 focus-visible:ring-2 focus-visible:ring-offset-2 ${a.ring}`}
                   >
                     ادخل المسار
                     <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
