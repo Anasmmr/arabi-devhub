@@ -78,7 +78,13 @@ function DepartmentPage() {
     <main>
       {/* Department intro */}
       <Section className="pt-8 sm:pt-12">
-        <div className="glass overflow-hidden rounded-3xl shadow-glass-lg">
+        <div
+          className={`glass overflow-hidden rounded-3xl shadow-glass-lg ${
+            department.slug === "ai"
+              ? "border-t-4 border-dept-ai/40 bg-dept-ai/5"
+              : ""
+          }`}
+        >
           <img
             src={deptImage(department.slug)}
             alt={`مسار ${department.name_ar}`}
