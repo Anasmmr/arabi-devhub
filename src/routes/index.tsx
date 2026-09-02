@@ -64,7 +64,7 @@ function Home() {
                 to="/departments"
                 className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-colors hover:bg-primary-soft"
               >
-                استكشف المسارات
+                استكشف لعبة المسارات
                 <ArrowLeft className="size-4" />
               </Link>
               <Link
@@ -178,7 +178,7 @@ function Home() {
         </div>
       </Section>
 
-      {/* 3. Pathways Game */}
+      {/* 3. لعبة المسارات */}
       <Section>
         <SectionHead
           eyebrow="لعبة المسارات"
