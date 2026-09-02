@@ -178,7 +178,7 @@ function Home() {
         </div>
       </Section>
 
-      {/* 3. Pathways Game */}
+      {/* 3. لعبة المسارات */}
       <Section>
         <SectionHead
           eyebrow="لعبة المسارات"
