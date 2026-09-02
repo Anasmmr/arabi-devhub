@@ -82,7 +82,9 @@ function DepartmentPage() {
           className={`glass overflow-hidden rounded-3xl shadow-glass-lg ${
             department.slug === "ai"
               ? "border-t-4 border-dept-ai/40 bg-dept-ai/5"
-              : ""
+              : department.slug === "security"
+                ? "border-t-4 border-dept-security/40 bg-dept-security/5"
+                : ""
           }`}
         >
           <img
