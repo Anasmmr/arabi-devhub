@@ -14,6 +14,7 @@ import { getDepartments } from "@/lib/community.functions";
 import { Section, SectionHead } from "@/components/site/Bits";
 import { DeptIcon } from "@/components/site/DeptIcon";
 import { deptImage } from "@/lib/deptImages";
+import { deptPath } from "@/lib/deptPaths";
 import { accentStyle, arabicNumber } from "@/lib/dept";
 
 export const Route = createFileRoute("/departments/")({
