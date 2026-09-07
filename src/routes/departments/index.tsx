@@ -155,7 +155,14 @@ function Departments() {
                   <div className="mt-5 flex items-center justify-between gap-3">
                     <span className="font-num inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
                       <BookOpen className="size-4" />
-                      {arabicNumber(d.courses.length)} دورات
+                      {(() => {
+                        const n = deptPath(d.slug).length;
+                        return n === 1
+                          ? "دورة واحدة"
+                          : n === 2
+                            ? "دورتان"
+                            : `${arabicNumber(n)} دورات`;
+                      })()}
                     </span>
                     <Link
                       to="/departments/$slug"
