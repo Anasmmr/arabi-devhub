@@ -69,7 +69,7 @@ function DepartmentPage() {
     ? Math.round((completedCount / department.courses.length) * 100)
     : 0;
   const paths = deptPath(department.slug);
-  const totalPossiblePoints = department.courses.reduce((sum, c) => sum + c.points + 500, 0);
+  
 
 
   return (
@@ -137,40 +137,11 @@ function DepartmentPage() {
         </div>
       </Section>
 
-      {/* External learning paths + points counter */}
+      {/* External learning paths */}
       {paths.length > 0 && (
         <Section className="pt-0">
           <div className="glass rounded-3xl p-6 shadow-glass-lg sm:p-8">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-2">
-                <Trophy className="size-5 text-gold" />
-                <h2 className="text-lg font-bold text-foreground sm:text-xl">عدّاد نقاط المسار</h2>
-              </div>
-              <div className="glass-soft flex items-center gap-4 rounded-2xl px-5 py-3">
-                <div className="text-center">
-                  <p className="font-num text-2xl font-bold text-primary sm:text-3xl">
-                    {arabicNumber(progress?.points ?? 0)}
-                  </p>
-                  <p className="mt-0.5 text-[11px] text-muted-foreground">نقاطك في المسار</p>
-                </div>
-                <span className="h-8 w-px bg-border" aria-hidden />
-                <div className="text-center">
-                  <p className="font-num text-2xl font-bold text-foreground sm:text-3xl">
-                    {arabicNumber(totalPossiblePoints)}
-                  </p>
-                  <p className="mt-0.5 text-[11px] text-muted-foreground">إجمالي نقاط المسار</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-4">
-              <Progress
-                percent={totalPossiblePoints ? ((progress?.points ?? 0) / totalPossiblePoints) * 100 : 0}
-                className={a.bar}
-              />
-            </div>
-
-            <h3 className="mt-8 text-base font-bold text-foreground sm:text-lg">
+            <h3 className="text-base font-bold text-foreground sm:text-lg">
               خطة تعلّم {department.name_ar}
             </h3>
             <div className="mt-4 grid gap-4 lg:grid-cols-2">
