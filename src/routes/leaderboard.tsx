@@ -1,117 +1,83 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Trophy } from "lucide-react";
-import { getLeaderboard } from "@/lib/community.functions";
+import { getDepartments } from "@/lib/community.functions";
 import { Section, SectionHead } from "@/components/site/Bits";
-import { arabicNumber } from "@/lib/dept";
+import { DeptIcon } from "@/components/site/DeptIcon";
+import { deptImage } from "@/lib/deptImages";
+import { accentStyle } from "@/lib/dept";
 
 export const Route = createFileRoute("/leaderboard")({
-  loader: () => getLeaderboard(),
+  loader: () => getDepartments(),
   head: () => ({
     meta: [
       { title: "لوحة الصدارة — Google Developer" },
       {
         name: "description",
-        content: "أعلى أعضاء نادي Google Developer بالنقاط المكتسبة من الدورات وتفاعل المجتمع.",
+        content:
+          "متابعة مجموع نقاط المسارات الأربعة ومعرفة الأعلى بينها.",
       },
       { property: "og:title", content: "لوحة الصدارة — Google Developer" },
       {
         property: "og:description",
-        content: "الترتيب، الاسم، ومجموع النقاط لأعلى أعضاء المجتمع.",
+        content: "عداد نقاط المسارات لمعرفة صاحب المركز الأول.",
       },
     ],
   }),
   component: Leaderboard,
 });
 
-function medal(rank: number) {
-  if (rank === 1) return "bg-gold/20 text-gold";
-  if (rank === 2) return "bg-silver/20 text-silver";
-  if (rank === 3) return "bg-bronze/20 text-bronze";
-  return "bg-primary/10 text-primary";
-}
-
 function Leaderboard() {
-  const { leaderboard } = Route.useLoaderData();
-  const top5 = leaderboard.slice(0, 5);
-  const rest = leaderboard.slice(5);
+  const { departments } = Route.useLoaderData();
 
   return (
     <main>
       <Section className="pt-8 sm:pt-12">
         <SectionHead
           eyebrow="لوحة الصدارة"
-          title="أعلى 5 أعضاء بالنقاط"
-          subtitle="النقاط تُحتسب من إكمال الدورات والتفاعل في مجموعات النادي عبر واتساب."
+          title="نقاط المسارات"
+          subtitle="أعلى مسار حسب مجموع النقاط المكتسبة — العدّاد يبدأ من الصفر في بداية الموسم."
         />
 
-        <ul className="mt-8 space-y-3">
-          {top5.map((m) => (
-            <li
-              key={m.id}
-              className="glass flex items-center gap-4 rounded-2xl p-4 shadow-glass transition-transform hover:-translate-y-1 sm:p-5"
-            >
-              <span
-                className={`font-num grid size-10 shrink-0 place-items-center rounded-xl text-base font-bold ${medal(m.rank)}`}
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {departments.map((d) => {
+            const a = accentStyle(d.accent);
+            return (
+              <article
+                key={d.id}
+                className="glass relative flex flex-col overflow-hidden rounded-2xl shadow-glass transition-transform hover:-translate-y-1"
               >
-                {arabicNumber(m.rank)}
-              </span>
-              <span className="grid size-12 shrink-0 place-items-center overflow-hidden rounded-full bg-primary/10 text-base font-bold text-primary">
-                {m.avatar_url ? (
+                <span
+                  className={`absolute inset-x-0 top-0 h-1.5 ${a.bg}`}
+                  aria-hidden
+                />
+                <div className="relative h-32 w-full">
                   <img
-                    src={m.avatar_url}
-                    alt={m.full_name}
+                    src={deptImage(d.slug)}
+                    alt={d.name_ar}
                     loading="lazy"
-                    className="size-full object-cover"
+                    className="h-full w-full object-cover"
                   />
-                ) : (
-                  m.full_name.charAt(0)
-                )}
-              </span>
-              <span className="min-w-0 flex-1 truncate text-base font-bold text-foreground">
-                {m.full_name}
-              </span>
-              <span className="font-num shrink-0 text-base font-bold text-primary">
-                {arabicNumber(m.total_points)} نقطة
-              </span>
-            </li>
-          ))}
-        </ul>
-
-        {rest.length > 0 && (
-          <>
-            <div className="mt-10 flex items-center gap-2">
-              <Trophy className="size-4 text-muted-foreground" />
-              <h2 className="text-sm font-semibold text-muted-foreground">بقية الأعضاء</h2>
-            </div>
-            <ul className="mt-4 divide-y divide-glass-border overflow-hidden rounded-2xl bg-glass shadow-glass">
-              {rest.map((m) => (
-                <li key={m.id} className="flex items-center gap-4 px-4 py-3 sm:px-5">
-                  <span className="font-num w-8 shrink-0 text-sm font-bold text-muted-foreground">
-                    {arabicNumber(m.rank)}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                </div>
+                <div className="flex flex-1 flex-col items-center p-6">
+                  <span
+                    className={`grid size-12 place-items-center rounded-xl ${a.soft} ${a.text}`}
+                  >
+                    <DeptIcon name={d.icon} className="size-6" />
                   </span>
-                  <span className="grid size-9 shrink-0 place-items-center overflow-hidden rounded-full bg-primary/10 text-sm font-bold text-primary">
-                    {m.avatar_url ? (
-                      <img
-                        src={m.avatar_url}
-                        alt={m.full_name}
-                        loading="lazy"
-                        className="size-full object-cover"
-                      />
-                    ) : (
-                      m.full_name.charAt(0)
-                    )}
-                  </span>
-                  <span className="min-w-0 flex-1 truncate text-sm font-semibold text-foreground">
-                    {m.full_name}
-                  </span>
-                  <span className="font-num shrink-0 text-sm font-bold text-primary">
-                    {arabicNumber(m.total_points)}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
+                  <h2 className="mt-4 text-center text-lg font-bold text-foreground">
+                    {d.name_ar}
+                  </h2>
+                  <p
+                    className={`font-num mt-3 text-4xl font-extrabold ${a.text}`}
+                  >
+                    ٠
+                  </p>
+                  <p className="mt-1 text-xs text-muted-foreground">نقطة</p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </Section>
     </main>
   );
