@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { Home, LayoutGrid, Trophy, User, Menu, X, LogOut, ShieldCheck } from "lucide-react";
+import { Home, LayoutGrid, Trophy, Menu, X, LogOut, ShieldCheck } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useSession } from "@/hooks/useSession";
 import { getMyRoles } from "@/lib/admin.functions";
