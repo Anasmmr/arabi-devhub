@@ -38,7 +38,7 @@ const achievements = [
 ];
 
 function Home() {
-  const { departments, leaderboard, stats } = Route.useLoaderData();
+  const { departments, stats } = Route.useLoaderData();
 
   return (
     <main>
