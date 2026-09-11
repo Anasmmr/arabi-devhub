@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, Twitter } from "lucide-react";
 import { getFounders } from "@/lib/community.functions";
 import { Section, SectionHead } from "@/components/site/Bits";
 
