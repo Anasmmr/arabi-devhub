@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, Twitter } from "lucide-react";
 import { getFounders } from "@/lib/community.functions";
 import { Section, SectionHead } from "@/components/site/Bits";
 
@@ -50,15 +50,15 @@ function Founders() {
                 <p className="mt-0.5 text-xs font-semibold text-primary">{f.role_ar}</p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.bio_ar}</p>
                 <div className="mt-3 flex gap-2">
-                  {f.github_url && (
+                  {f.x_url && (
                     <a
-                      href={f.github_url}
+                      href={f.x_url}
                       target="_blank"
                       rel="noreferrer"
-                      aria-label={`GitHub ${f.name}`}
+                      aria-label={`X ${f.name}`}
                       className="glass-soft grid size-9 place-items-center rounded-xl text-muted-foreground transition-colors hover:text-primary"
                     >
-                      <Github className="size-4" />
+                      <Twitter className="size-4" />
                     </a>
                   )}
                   {f.linkedin_url && (
@@ -70,6 +70,17 @@ function Founders() {
                       className="glass-soft grid size-9 place-items-center rounded-xl text-muted-foreground transition-colors hover:text-primary"
                     >
                       <Linkedin className="size-4" />
+                    </a>
+                  )}
+                  {f.github_url && (
+                    <a
+                      href={f.github_url}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`GitHub ${f.name}`}
+                      className="glass-soft grid size-9 place-items-center rounded-xl text-muted-foreground transition-colors hover:text-primary"
+                    >
+                      <Github className="size-4" />
                     </a>
                   )}
                 </div>
