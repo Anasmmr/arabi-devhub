@@ -92,7 +92,7 @@ export function Footer() {
               <p className="text-sm font-semibold text-foreground">تواصل معنا</p>
               <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <a href="https://wa.me/" className="transition-colors hover:text-primary">
+                  <a href="https://chat.whatsapp.com/IRHXy5NxyiZLbHUxQrQymw" className="transition-colors hover:text-primary">
                     واتساب
                   </a>
                 </li>
