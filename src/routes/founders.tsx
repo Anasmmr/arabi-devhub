@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin, X } from "lucide-react";
 import { getFounders } from "@/lib/community.functions";
 import { Section, SectionHead } from "@/components/site/Bits";
 
@@ -58,7 +58,7 @@ function Founders() {
                       aria-label={`X ${f.name}`}
                       className="glass-soft grid size-9 place-items-center rounded-xl text-muted-foreground transition-colors hover:text-primary"
                     >
-                      <Twitter className="size-4" />
+                      <X className="size-4" />
                     </a>
                   )}
                   {f.linkedin_url && (
