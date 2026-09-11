@@ -119,7 +119,7 @@ export function Footer() {
           </div>
           <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-glass-border pt-5 text-xs text-muted-foreground">
             <p>© 2026 Google Developer Community — جميع الحقوق محفوظة.</p>
-            <p className="font-num">Learn · Complete · Earn · Achieve</p>
+            <p className="font-num">تعلّم · أكمل · اربح · حقّق</p>
           </div>
         </div>
       </div>

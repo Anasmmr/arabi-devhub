@@ -61,6 +61,7 @@ export function Progress({ percent, className = "" }: { percent: number; classNa
 
 export function StatCard({ value, label }: { value: number | string; label: string }) {
   const renderValue = () => {
+    if (value == null) return <span>-</span>;
     if (typeof value === "number") return <span>{arabicNumber(value)}</span>;
     const match = value.match(/^([+\-]?)([\d,]+)([+\-]?)$/);
     if (!match) return <span>{value}</span>;
