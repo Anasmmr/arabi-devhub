@@ -70,7 +70,7 @@ function Leaderboard() {
                   <p
                     className={`font-num mt-3 text-4xl font-extrabold ${a.text}`}
                   >
-                    ٠
+                    {arabicNumber(0)}
                   </p>
                   <p className="mt-1 text-xs text-muted-foreground">نقطة</p>
                 </div>
