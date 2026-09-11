@@ -2,7 +2,7 @@ import { MessageCircle } from "lucide-react";
 
 export const socials = [
   { label: "واتساب", handle: "مجموعة المجتمع", href: "https://chat.whatsapp.com/IRHXy5NxyiZLbHUxQrQymw", icon: MessageCircle },
-  { label: "تيك توك", handle: "@googledev.ar", href: "https://tiktok.com/", icon: TikTokIcon },
+  { label: "تيك توك", handle: "@gdgoc_uom", href: "https://www.tiktok.com/@gdgoc_uom", icon: TikTokIcon },
 ] as const;
 
 function TikTokIcon({ className }: { className?: string }) {
