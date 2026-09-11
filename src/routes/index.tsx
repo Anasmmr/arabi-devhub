@@ -244,63 +244,7 @@ function Home() {
         </div>
       </Section>
 
-      {/* 5. Leaderboard — top 5, rank + name + points only */}
-      <Section>
-        <SectionHead
-          eyebrow="لوحة الصدارة"
-          title="أعلى 5 أعضاء بالنقاط"
-          subtitle="النقاط تُجمع من إكمال الدورات والتفاعل في مجموعات النادي."
-        />
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {leaderboard.slice(0, 5).map((m) => (
-            <li
-              key={m.id}
-              className="glass flex items-center gap-3 rounded-2xl p-4 shadow-glass transition-transform hover:-translate-y-1"
-            >
-              <span
-                className={`font-num grid size-9 shrink-0 place-items-center rounded-lg text-sm font-bold ${
-                  m.rank === 1
-                    ? "bg-gold/20 text-gold"
-                    : m.rank === 2
-                      ? "bg-silver/20 text-silver"
-                      : m.rank === 3
-                        ? "bg-bronze/20 text-bronze"
-                        : "bg-primary/10 text-primary"
-                }`}
-              >
-                {arabicNumber(m.rank)}
-              </span>
-              <span className="grid size-10 shrink-0 place-items-center overflow-hidden rounded-full bg-primary/10 text-sm font-bold text-primary">
-                {m.avatar_url ? (
-                  <img
-                    src={m.avatar_url}
-                    alt={m.full_name}
-                    loading="lazy"
-                    className="size-full object-cover"
-                  />
-                ) : (
-                  m.full_name.charAt(0)
-                )}
-              </span>
-              <span className="min-w-0 flex-1 truncate text-sm font-semibold text-foreground">
-                {m.full_name}
-              </span>
-              <span className="font-num shrink-0 text-sm font-bold text-primary">
-                {arabicNumber(m.total_points)} نقطة
-              </span>
-            </li>
-          ))}
-        </ul>
-        <Link
-          to="/leaderboard"
-          className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
-        >
-          اللوحة الكاملة
-          <ArrowLeft className="size-3.5" />
-        </Link>
-      </Section>
-
-      {/* How it works */}
+      {/* 4. How it works */}
       <Section>
         <SectionHead eyebrow="كيف يعمل النظام" title="من التعلّم إلى الشهادة في أربع خطوات" />
         <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
