@@ -70,7 +70,6 @@ export async function fetchStats() {
     certificates: "+300",
     completions: 1860 + (coursesDone.count ?? 0),
     courses: courses.count ?? 0,
-    events: 64,
-    workshops: 96,
+    beneficiaries: "+1200",
   };
 }

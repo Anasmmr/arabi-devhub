@@ -139,9 +139,9 @@ function Home() {
           <div>
             <div className="grid grid-cols-2 gap-3">
               <StatCard value={stats.members} label="عضو" />
-              <StatCard value={stats.events} label="لقاء مجتمعي" />
-              <StatCard value={stats.workshops} label="ورشة تدريبية" />
+              <StatCard value={stats.beneficiaries} label="مستفيد" />
               <StatCard value={stats.certificates} label="شهادة" />
+              <StatCard value="+20" label="دورات مكتملة" />
             </div>
             <ul className="mt-4 space-y-2.5">
               {achievements.map((a) => (
