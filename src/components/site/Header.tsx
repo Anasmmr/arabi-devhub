@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { Home, LayoutGrid, Trophy, User, Menu, X, LogOut, ShieldCheck } from "lucide-react";
+import { Home, LayoutGrid, Trophy, Menu, X, LogOut, ShieldCheck } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useSession } from "@/hooks/useSession";
 import { getMyRoles } from "@/lib/admin.functions";
@@ -13,7 +13,6 @@ const links = [
   { to: "/", label: "الرئيسية" },
   { to: "/departments", label: "لعبة المسارات" },
   { to: "/leaderboard", label: "لوحة الصدارة" },
-  { to: "/profile", label: "حسابي" },
   { to: "/about", label: "عن النادي" },
   { to: "/founders", label: "المؤسسون" },
 ] as const;
@@ -22,7 +21,6 @@ const mobileTabs = [
   { to: "/", label: "الرئيسية", icon: Home },
   { to: "/departments", label: "لعبة المسارات", icon: LayoutGrid },
   { to: "/leaderboard", label: "الصدارة", icon: Trophy },
-  { to: "/profile", label: "حسابي", icon: User },
 ] as const;
 
 export function Header() {
@@ -155,7 +153,7 @@ export function Header() {
 
       {/* Mobile bottom navigation */}
       <nav className="fixed inset-x-0 bottom-0 z-50 lg:hidden">
-        <div className="glass mx-3 mb-3 grid grid-cols-4 gap-1 rounded-2xl p-1.5 shadow-glass-lg">
+        <div className="glass mx-3 mb-3 grid grid-cols-3 gap-1 rounded-2xl p-1.5 shadow-glass-lg">
            {mobileTabs.map((t) => {
              if (!t) return null;
              const active = t.to === "/" ? pathname === "/" : pathname.startsWith(t.to);
