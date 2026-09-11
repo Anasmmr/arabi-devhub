@@ -244,7 +244,7 @@ function Home() {
         </div>
       </Section>
 
-      {/* 4. How it works */}
+      {/* 5. How it works */}
       <Section>
         <SectionHead eyebrow="كيف يعمل النظام" title="من التعلّم إلى الشهادة في أربع خطوات" />
         <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
