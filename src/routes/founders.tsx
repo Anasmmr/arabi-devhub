@@ -30,10 +30,10 @@ function Founders() {
           title="الفريق الذي بدأ المجتمع"
           subtitle="مجموعة من المطوّرين والمصمّمين المتطوّعين يقودون الأقسام والبرامج التدريبية."
         />
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto mt-8 flex max-w-2xl flex-col gap-4">
           {founders.map((f) => (
-            <article key={f.id} className="glass rounded-2xl p-6 text-center shadow-glass">
-              <span className="mx-auto grid size-16 place-items-center overflow-hidden rounded-2xl bg-primary/10 text-xl font-bold text-primary">
+            <article key={f.id} className="glass flex items-start gap-4 rounded-2xl p-4 shadow-glass sm:gap-5 sm:p-5">
+              <span className="grid size-14 shrink-0 place-items-center overflow-hidden rounded-2xl bg-primary/10 text-lg font-bold text-primary sm:size-16 sm:text-xl">
                 {f.image_url ? (
                   <img
                     src={f.image_url}
@@ -45,32 +45,34 @@ function Founders() {
                   f.initial
                 )}
               </span>
-              <h2 className="mt-4 text-base font-bold text-foreground">{f.name}</h2>
-              <p className="mt-1 text-xs font-semibold text-primary">{f.role_ar}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.bio_ar}</p>
-              <div className="mt-4 flex justify-center gap-2">
-                {f.github_url && (
-                  <a
-                    href={f.github_url}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`GitHub ${f.name}`}
-                    className="glass-soft grid size-9 place-items-center rounded-xl text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    <Github className="size-4" />
-                  </a>
-                )}
-                {f.linkedin_url && (
-                  <a
-                    href={f.linkedin_url}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`LinkedIn ${f.name}`}
-                    className="glass-soft grid size-9 place-items-center rounded-xl text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    <Linkedin className="size-4" />
-                  </a>
-                )}
+              <div className="min-w-0 flex-1">
+                <h2 className="text-base font-bold text-foreground">{f.name}</h2>
+                <p className="mt-0.5 text-xs font-semibold text-primary">{f.role_ar}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.bio_ar}</p>
+                <div className="mt-3 flex gap-2">
+                  {f.github_url && (
+                    <a
+                      href={f.github_url}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`GitHub ${f.name}`}
+                      className="glass-soft grid size-9 place-items-center rounded-xl text-muted-foreground transition-colors hover:text-primary"
+                    >
+                      <Github className="size-4" />
+                    </a>
+                  )}
+                  {f.linkedin_url && (
+                    <a
+                      href={f.linkedin_url}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`LinkedIn ${f.name}`}
+                      className="glass-soft grid size-9 place-items-center rounded-xl text-muted-foreground transition-colors hover:text-primary"
+                    >
+                      <Linkedin className="size-4" />
+                    </a>
+                  )}
+                </div>
               </div>
             </article>
           ))}
