@@ -132,7 +132,7 @@ function Home() {
         <SectionHead
           eyebrow="إنجازاتنا"
           title="ما حقّقناه حتى الآن"
-          subtitle="أرقام ولحظات من رحلة النادي مع أعضائه. الصور الحالية مؤقتة ويمكن استبدالها بصور النادي الحقيقية."
+          subtitle="أرقام ولحظات من رحلة النادي مع أعضائه."
         />
         <div className="mt-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
