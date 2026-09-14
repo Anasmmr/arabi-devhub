@@ -13,9 +13,11 @@ const links = [
   { to: "/", label: "الرئيسية" },
   { to: "/departments", label: "لعبة المسارات" },
   { to: "/leaderboard", label: "لوحة الصدارة" },
+  { to: "/members", label: "أعضاؤنا" },
   { to: "/about", label: "عن النادي" },
   { to: "/founders", label: "المؤسسون" },
 ] as const;
+
 
 const mobileTabs = [
   { to: "/", label: "الرئيسية", icon: Home },

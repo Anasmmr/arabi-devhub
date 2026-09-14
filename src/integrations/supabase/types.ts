@@ -135,6 +135,41 @@ export type Database = {
           },
         ]
       }
+      department_points: {
+        Row: {
+          amount: number
+          created_at: string
+          created_by: string
+          department_id: string
+          id: string
+          reason_ar: string | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          created_by: string
+          department_id: string
+          id?: string
+          reason_ar?: string | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          created_by?: string
+          department_id?: string
+          id?: string
+          reason_ar?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "department_points_department_id_fkey"
+            columns: ["department_id"]
+            isOneToOne: false
+            referencedRelation: "departments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       departments: {
         Row: {
           accent: string
