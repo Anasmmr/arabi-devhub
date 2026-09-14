@@ -34,8 +34,8 @@ function Leaderboard() {
         <SectionHead
           eyebrow="لوحة الصدارة"
           title="نقاط المسارات"
-          subtitle="أعلى مسار حسب مجموع النقاط المكتسبة — العدّاد يبدأ من الصفر في بداية الموسم."
         />
+
 
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {departments.map((d) => {
