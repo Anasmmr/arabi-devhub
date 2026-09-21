@@ -15,7 +15,6 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as FoundersRouteImport } from './routes/founders'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
-import { Route as MembersRouteImport } from './routes/members'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as DepartmentsIndexRouteImport } from './routes/departments/index'
 import { Route as DepartmentsSlugRouteImport } from './routes/departments/$slug'
@@ -51,11 +50,6 @@ const LeaderboardRoute = LeaderboardRouteImport.update({
   path: '/leaderboard',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MembersRoute = MembersRouteImport.update({
-  id: '/members',
-  path: '/members',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
@@ -84,7 +78,6 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/founders': typeof FoundersRoute
   '/leaderboard': typeof LeaderboardRoute
-  '/members': typeof MembersRoute
   '/profile': typeof ProfileRoute
   '/departments/$slug': typeof DepartmentsSlugRoute
   '/departments/': typeof DepartmentsIndexRoute
@@ -97,7 +90,6 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/founders': typeof FoundersRoute
   '/leaderboard': typeof LeaderboardRoute
-  '/members': typeof MembersRoute
   '/profile': typeof ProfileRoute
   '/departments/$slug': typeof DepartmentsSlugRoute
   '/departments': typeof DepartmentsIndexRoute
@@ -111,7 +103,6 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/founders': typeof FoundersRoute
   '/leaderboard': typeof LeaderboardRoute
-  '/members': typeof MembersRoute
   '/profile': typeof ProfileRoute
   '/departments/$slug': typeof DepartmentsSlugRoute
   '/departments/': typeof DepartmentsIndexRoute
@@ -126,7 +117,6 @@ export interface FileRouteTypes {
     | '/auth'
     | '/founders'
     | '/leaderboard'
-    | '/members'
     | '/profile'
     | '/departments/$slug'
     | '/departments/'
@@ -139,7 +129,6 @@ export interface FileRouteTypes {
     | '/auth'
     | '/founders'
     | '/leaderboard'
-    | '/members'
     | '/profile'
     | '/departments/$slug'
     | '/departments'
@@ -152,7 +141,6 @@ export interface FileRouteTypes {
     | '/auth'
     | '/founders'
     | '/leaderboard'
-    | '/members'
     | '/profile'
     | '/departments/$slug'
     | '/departments/'
@@ -166,7 +154,6 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   FoundersRoute: typeof FoundersRoute
   LeaderboardRoute: typeof LeaderboardRoute
-  MembersRoute: typeof MembersRoute
   ProfileRoute: typeof ProfileRoute
   DepartmentsSlugRoute: typeof DepartmentsSlugRoute
   DepartmentsIndexRoute: typeof DepartmentsIndexRoute
@@ -217,13 +204,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LeaderboardRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/members': {
-      id: '/members'
-      path: '/members'
-      fullPath: '/members'
-      preLoaderRoute: typeof MembersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/profile': {
       id: '/profile'
       path: '/profile'
@@ -262,7 +242,6 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   FoundersRoute: FoundersRoute,
   LeaderboardRoute: LeaderboardRoute,
-  MembersRoute: MembersRoute,
   ProfileRoute: ProfileRoute,
   DepartmentsSlugRoute: DepartmentsSlugRoute,
   DepartmentsIndexRoute: DepartmentsIndexRoute,
