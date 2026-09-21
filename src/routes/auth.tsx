@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { LogIn, UserPlus } from "lucide-react";
+import { LogIn } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useSession } from "@/hooks/useSession";
 import { Section } from "@/components/site/Bits";
 
+const registrationFormUrl = "https://forms.gle/4u9dTKbaL3EcTpNN7";
+
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "الدخول والتسجيل — Google Developer" },
+      { title: "تسجيل الدخول — Google Developer" },
       {
         name: "description",
-        content: "أنشئ حسابك في نادي Google Developer أو سجّل الدخول لمتابعة نقاطك وشهاداتك.",
+        content: "سجّل الدخول إلى نادي Google Developer لمتابعة نقاطك وشهاداتك.",
       },
-      { property: "og:title", content: "الدخول والتسجيل — Google Developer" },
-      { property: "og:description", content: "حساب واحد لتتبّع تقدّمك ونقاطك وشهاداتك." },
+      { property: "og:title", content: "تسجيل الدخول — Google Developer" },
+      { property: "og:description", content: "تابع تقدّمك ونقاطك وشهاداتك." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -23,9 +27,6 @@ export const Route = createFileRoute("/auth")({
 });
 
 function AuthPage() {
-  const [mode, setMode] = useState<"signin" | "signup">("signin");
-  const [fullName, setFullName] = useState("");
-  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
@@ -40,30 +41,10 @@ function AuthPage() {
     e.preventDefault();
     setBusy(true);
     try {
-      if (mode === "signup") {
-        const { data, error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            emailRedirectTo: `${window.location.origin}/profile`,
-            data: { full_name: fullName, whatsapp_phone: phone },
-          },
-        });
-        if (error) throw error;
-        if (data.session) {
-          toast.success("تم إنشاء الحساب — أهلاً بك!");
-          navigate({ to: "/profile" });
-        } else {
-          toast.success("تم إنشاء الحساب — تحقّق من بريدك لتأكيد التسجيل.");
-        }
-
-
-      } else {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error;
-        toast.success("أهلاً بك مجددًا!");
-        navigate({ to: "/profile" });
-      }
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+      toast.success("أهلاً بك مجددًا!");
+      navigate({ to: "/profile" });
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "تعذّر إكمال العملية.");
     } finally {
@@ -84,11 +65,9 @@ function AuthPage() {
       <Section className="pt-10 sm:pt-16">
         <div className="mx-auto max-w-md">
           <div className="glass rounded-3xl p-6 shadow-glass-lg sm:p-8">
-            <h1 className="text-2xl font-bold text-foreground">
-              {mode === "signin" ? "تسجيل الدخول" : "إنشاء حساب"}
-            </h1>
+            <h1 className="text-2xl font-bold text-foreground">تسجيل الدخول</h1>
             <p className="mt-2 text-sm text-muted-foreground">
-              حساب واحد لمتابعة نقاطك، تقدّمك في الأقسام، وشهاداتك.
+              سجّل الدخول لمتابعة نقاطك، تقدّمك في الأقسام، وشهاداتك.
             </p>
 
             <button
@@ -106,42 +85,6 @@ function AuthPage() {
             </div>
 
             <form onSubmit={submit} className="space-y-3">
-              {mode === "signup" && (
-                <div>
-                  <label htmlFor="name" className="text-xs font-semibold text-foreground">
-                    الاسم الكامل
-                  </label>
-                  <input
-                    id="name"
-                    required
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    className="mt-1.5 w-full rounded-xl border border-glass-border bg-background/60 px-4 py-3 text-sm text-foreground outline-none focus:border-primary"
-                  />
-                </div>
-              )}
-              {mode === "signup" && (
-                <div>
-                  <label htmlFor="phone" className="text-xs font-semibold text-foreground">
-                    رقم الجوال (واتساب)
-                  </label>
-                  <input
-                    id="phone"
-                    required
-                    dir="ltr"
-                    inputMode="tel"
-                    placeholder="+9665XXXXXXXX"
-                    pattern="^\+?[0-9\s\-]{8,20}$"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    className="mt-1.5 w-full rounded-xl border border-glass-border bg-background/60 px-4 py-3 text-sm text-foreground outline-none focus:border-primary"
-                  />
-                  <p className="mt-1 text-[11px] text-muted-foreground">
-                    نستخدمه لربط نقاط تفاعلك في مجموعات واتساب بحسابك.
-                  </p>
-                </div>
-              )}
-
               <div>
                 <label htmlFor="email" className="text-xs font-semibold text-foreground">
                   البريد الإلكتروني
@@ -176,17 +119,19 @@ function AuthPage() {
                 disabled={busy}
                 className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-soft disabled:opacity-60"
               >
-                {mode === "signin" ? <LogIn className="size-4" /> : <UserPlus className="size-4" />}
-                {mode === "signin" ? "دخول" : "تسجيل"}
+                <LogIn className="size-4" />
+                دخول
               </button>
             </form>
 
-            <button
-              onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
-              className="mt-5 w-full text-center text-sm font-semibold text-primary hover:underline"
+            <a
+              href={registrationFormUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-5 block w-full text-center text-sm font-semibold text-primary hover:underline"
             >
-              {mode === "signin" ? "ليس لديك حساب؟ أنشئ حسابًا" : "لديك حساب بالفعل؟ سجّل الدخول"}
-            </button>
+              ليس لديك حساب؟ سجّل عبر الفورم
+            </a>
           </div>
         </div>
       </Section>
