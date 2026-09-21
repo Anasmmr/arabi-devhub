@@ -9,7 +9,9 @@ export function FounderCards({
   className?: string;
 }) {
   return (
-    <div className={`mx-auto flex max-w-2xl flex-col gap-4 ${className}`}>
+    <div
+      className={`mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2 ${className}`}
+    >
       {founders.map((f) => (
         <article
           key={f.id}
