@@ -107,6 +107,11 @@ function ProfilePage() {
               <p className="mt-1 text-sm text-muted-foreground">
                 {data.profile.headline || "عضو ب المجتمع 1587"}
               </p>
+              {(data.profile as { member_no?: number | null }).member_no != null && (
+                <p className="mt-2 inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                  رقمك التسلسلي: {arabicNumber((data.profile as { member_no?: number | null }).member_no!)}
+                </p>
+              )}
             </div>
           </div>
           <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
