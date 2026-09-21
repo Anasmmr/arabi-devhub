@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Award, CheckCircle2, MessageCircle, Sparkles, Target, Trophy } from "lucide-react";
+import { ArrowLeft, Award, CheckCircle2, Sparkles, Target } from "lucide-react";
 import { getHomeData } from "@/lib/community.functions";
 import { Section, SectionHead, StatCard } from "@/components/site/Bits";
 import { DeptIcon } from "@/components/site/DeptIcon";
@@ -261,35 +261,6 @@ function Home() {
             </li>
           ))}
         </ol>
-      </Section>
-
-      {/* Features */}
-      <Section>
-        <div className="grid gap-4 lg:grid-cols-3">
-          {[
-            {
-              icon: CheckCircle2,
-              title: "تتبّع تقدّم دقيق",
-              body: "نسبة إنجاز لكل قسم، وسجل كامل لكل دورة أكملتها ونقاطها.",
-            },
-            {
-              icon: Trophy,
-              title: "شهادات موثّقة",
-              body: "لكل دورة شهادة برقم تسلسلي فريد تظهر في ملفك الشخصي.",
-            },
-            {
-              icon: MessageCircle,
-              title: "تكامل واتساب",
-              body: "تفاعلك وإجاباتك الصحيحة عبر Googlely تُضيف نقاطًا إلى حسابك تلقائيًا.",
-            },
-          ].map((f) => (
-            <div key={f.title} className="glass rounded-2xl p-6 shadow-glass">
-              <f.icon className="size-6 text-primary" />
-              <h3 className="mt-4 text-base font-bold text-foreground">{f.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
-            </div>
-          ))}
-        </div>
       </Section>
 
       {/* CTA */}
