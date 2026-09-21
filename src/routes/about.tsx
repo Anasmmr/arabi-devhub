@@ -98,7 +98,7 @@ function About() {
         <div className="mt-10">
           <SectionHead
             eyebrow="المؤسسون"
-            title="الفريق الذي بدأ المجتمع"
+            title="فريق النادي"
             subtitle="مجموعة من المطوّرين والمصمّمين المتطوّعين يقودون المسارات والبرامج التدريبية."
           />
           <FounderCards founders={founders} className="mt-8" />

@@ -29,7 +29,7 @@ function Founders() {
       <Section className="pt-8 sm:pt-12">
         <SectionHead
           eyebrow="المؤسسون"
-          title="الفريق الذي بدأ المجتمع"
+          title="فريق النادي"
           subtitle="مجموعة من المطوّرين والمصمّمين المتطوّعين يقودون الأقسام والبرامج التدريبية."
         />
         <FounderCards founders={founders} className="mt-8" />
