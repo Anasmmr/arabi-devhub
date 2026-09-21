@@ -99,8 +99,7 @@ function Departments() {
             <ul className="mt-4 grid gap-3 sm:grid-cols-2">
               <li className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground">
                 <Users className="mt-0.5 size-4 shrink-0 text-primary" />
-                نهاية كل شهر أكثر فريق تفاعل وأنجز مهمات أكثر من الباقي بياخذ 100 نقطة إضافية على
-                مجموع نقاطهم.
+                نهاية كل شهر الفريق الفائز يختار فعاليتين للشهر القادم.
               </li>
               <li className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground">
                 <Share2 className="mt-0.5 size-4 shrink-0 text-primary" />
