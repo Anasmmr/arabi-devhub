@@ -79,7 +79,7 @@ function Departments() {
                 <h3 className="text-base font-bold text-foreground sm:text-lg">نظام النقاط</h3>
               </div>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                كل مسار له عدد من الدورات، كل دورة لها 50 نقطة عند الإتمام.
+                كل مسار له عدد من الدورات، وكل دورة لها نقاطها.
               </p>
               <div className="mt-4 rounded-2xl border border-dashed border-primary/40 bg-background/50 p-4">
                 <p className="text-xs font-semibold text-foreground">مثال من الواجهة:</p>
