@@ -103,8 +103,8 @@ function Departments() {
               </li>
               <li className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground">
                 <Share2 className="mt-0.5 size-4 shrink-0 text-primary" />
-                عند إتمام قسم أو دورة أو مسار أو مشروع شارك إنجازك في X على #مطورين_المستقبل لتكسب 5
-                نقاط إضافية.
+                عند إتمام قسم أو دورة أو مسار أو مشروع شارك إنجازك في X مع منشن النادي @gdgoc_uom
+                لتكسب 5 نقاط إضافية.
               </li>
               <li className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground">
                 <Award className="mt-0.5 size-4 shrink-0 text-primary" />
