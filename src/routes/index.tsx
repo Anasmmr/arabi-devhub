@@ -263,35 +263,6 @@ function Home() {
         </ol>
       </Section>
 
-      {/* Features */}
-      <Section>
-        <div className="grid gap-4 lg:grid-cols-3">
-          {[
-            {
-              icon: CheckCircle2,
-              title: "تتبّع تقدّم دقيق",
-              body: "نسبة إنجاز لكل قسم، وسجل كامل لكل دورة أكملتها ونقاطها.",
-            },
-            {
-              icon: Trophy,
-              title: "شهادات موثّقة",
-              body: "لكل دورة شهادة برقم تسلسلي فريد تظهر في ملفك الشخصي.",
-            },
-            {
-              icon: MessageCircle,
-              title: "تكامل واتساب",
-              body: "تفاعلك وإجاباتك الصحيحة عبر Googlely تُضيف نقاطًا إلى حسابك تلقائيًا.",
-            },
-          ].map((f) => (
-            <div key={f.title} className="glass rounded-2xl p-6 shadow-glass">
-              <f.icon className="size-6 text-primary" />
-              <h3 className="mt-4 text-base font-bold text-foreground">{f.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
       {/* CTA */}
       <Section>
         <div className="glass relative overflow-hidden rounded-3xl p-8 text-center shadow-glass-lg sm:p-12">
