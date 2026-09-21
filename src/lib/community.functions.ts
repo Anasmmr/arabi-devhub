@@ -38,4 +38,5 @@ export const getFounders = createServerFn({ method: "GET" }).handler(async () =>
 
 export const getAboutData = createServerFn({ method: "GET" }).handler(async () => ({
   stats: await fetchStats(),
+  founders: await fetchFounders(),
 }));

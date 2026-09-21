@@ -1,0 +1,74 @@
+import { Github, Linkedin, X } from "lucide-react";
+import type { Founder } from "@/lib/community.server";
+
+export function FounderCards({
+  founders,
+  className = "",
+}: {
+  founders: Founder[];
+  className?: string;
+}) {
+  return (
+    <div className={`mx-auto flex max-w-2xl flex-col gap-4 ${className}`}>
+      {founders.map((f) => (
+        <article
+          key={f.id}
+          className="glass flex items-start gap-4 rounded-2xl p-4 shadow-glass sm:gap-5 sm:p-5"
+        >
+          <span className="grid size-14 shrink-0 place-items-center overflow-hidden rounded-2xl bg-primary/10 text-lg font-bold text-primary sm:size-16 sm:text-xl">
+            {f.image_url ? (
+              <img
+                src={f.image_url}
+                alt={f.name}
+                loading="lazy"
+                className="size-full object-cover"
+              />
+            ) : (
+              f.initial
+            )}
+          </span>
+          <div className="min-w-0 flex-1">
+            <h2 className="text-base font-bold text-foreground">{f.name}</h2>
+            <p className="mt-0.5 text-xs font-semibold text-primary">{f.role_ar}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.bio_ar}</p>
+            <div className="mt-3 flex gap-2">
+              {f.x_url && (
+                <a
+                  href={f.x_url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`X ${f.name}`}
+                  className="glass-soft grid size-9 place-items-center rounded-xl text-muted-foreground transition-colors hover:text-primary"
+                >
+                  <X className="size-4" />
+                </a>
+              )}
+              {f.linkedin_url && (
+                <a
+                  href={f.linkedin_url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`LinkedIn ${f.name}`}
+                  className="glass-soft grid size-9 place-items-center rounded-xl text-muted-foreground transition-colors hover:text-primary"
+                >
+                  <Linkedin className="size-4" />
+                </a>
+              )}
+              {f.github_url && (
+                <a
+                  href={f.github_url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`GitHub ${f.name}`}
+                  className="glass-soft grid size-9 place-items-center rounded-xl text-muted-foreground transition-colors hover:text-primary"
+                >
+                  <Github className="size-4" />
+                </a>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}

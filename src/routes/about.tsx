@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Award, CheckCircle2, Sparkles, Target } from "lucide-react";
 import { getAboutData } from "@/lib/community.functions";
 import { Section, SectionHead, StatCard } from "@/components/site/Bits";
+import { FounderCards } from "@/components/site/FounderCards";
 import { SocialGrid } from "@/components/site/Socials";
 import { clubGallery } from "@/lib/clubImages";
 
@@ -20,6 +21,8 @@ export const Route = createFileRoute("/about")({
         property: "og:description",
         content: "رسالة النادي وأهدافه وإنجازاته وصور من أنشطته.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: About,
@@ -35,7 +38,7 @@ const achievements = [
 ];
 
 function About() {
-  const { stats } = Route.useLoaderData();
+  const { stats, founders } = Route.useLoaderData();
 
   return (
     <main>
@@ -91,6 +94,15 @@ function About() {
             </li>
           ))}
         </ul>
+
+        <div className="mt-10">
+          <SectionHead
+            eyebrow="المؤسسون"
+            title="الفريق الذي بدأ المجتمع"
+            subtitle="مجموعة من المطوّرين والمصمّمين المتطوّعين يقودون المسارات والبرامج التدريبية."
+          />
+          <FounderCards founders={founders} className="mt-8" />
+        </div>
 
         <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
           {gallery.map((g, i) => (
