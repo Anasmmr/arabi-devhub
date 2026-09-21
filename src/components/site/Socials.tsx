@@ -1,8 +1,13 @@
-import { MessageCircle } from "lucide-react";
+import { Globe, Instagram, Linkedin, MessageCircle, Users, X } from "lucide-react";
 
 export const socials = [
   { label: "واتساب", handle: "مجموعة المجتمع", href: "https://chat.whatsapp.com/IRHXy5NxyiZLbHUxQrQymw", icon: MessageCircle },
   { label: "تيك توك", handle: "@gdgoc_uom", href: "https://www.tiktok.com/@gdgoc_uom", icon: TikTokIcon },
+  { label: "منصة إكس", handle: "@gdgoc_uom", href: "https://x.com/gdgoc_uom", icon: X },
+  { label: "إنستغرام", handle: "@gdgoc.uom", href: "https://www.instagram.com/gdgoc.uom", icon: Instagram },
+  { label: "لينكد إن", handle: "GDG on Campus Mustaqbal University", href: "https://www.linkedin.com/company/gdgoc-uom", icon: Linkedin },
+  { label: "صفحتنا الرسمية", handle: "منصة قوقل للمطورين", href: "https://gdg.community.dev/gdg-on-campus-mustaqbal-university/", icon: Users },
+  { label: "موقعنا الرسمي", handle: "gdg-uom.me", href: "https://gdg-uom.me", icon: Globe },
 ] as const;
 
 function TikTokIcon({ className }: { className?: string }) {
