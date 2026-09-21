@@ -14,7 +14,6 @@ const links = [
   { to: "/departments", label: "لعبة المسارات" },
   { to: "/leaderboard", label: "لوحة الصدارة" },
   { to: "/about", label: "عن النادي" },
-  { to: "/founders", label: "المؤسسون" },
 ] as const;
 
 
