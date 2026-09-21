@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Award, CheckCircle2, MessageCircle, Sparkles, Target, Trophy } from "lucide-react";
+import { ArrowLeft, Award, CheckCircle2, Sparkles, Target } from "lucide-react";
 import { getHomeData } from "@/lib/community.functions";
 import { Section, SectionHead, StatCard } from "@/components/site/Bits";
 import { DeptIcon } from "@/components/site/DeptIcon";
