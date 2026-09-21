@@ -304,6 +304,7 @@ export type Database = {
           id: string
           is_demo: boolean
           linkedin_url: string | null
+          member_no: number | null
           total_points: number
           updated_at: string
           website_url: string | null
@@ -321,6 +322,7 @@ export type Database = {
           id: string
           is_demo?: boolean
           linkedin_url?: string | null
+          member_no?: number | null
           total_points?: number
           updated_at?: string
           website_url?: string | null
@@ -338,6 +340,7 @@ export type Database = {
           id?: string
           is_demo?: boolean
           linkedin_url?: string | null
+          member_no?: number | null
           total_points?: number
           updated_at?: string
           website_url?: string | null
