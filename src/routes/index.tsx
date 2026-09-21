@@ -31,7 +31,6 @@ export const Route = createFileRoute("/")({
 const gallery = clubGallery;
 
 const achievements = [
-  "أكثر من 60 لقاءً وورشة تقنية بحضور مباشر وعن بُعد.",
   "مسارات تعلّم متكاملة في أربعة تخصصات تقنية مطلوبة.",
   "شراكات مع مجتمعات وجامعات في أكثر من مدينة عربية.",
 ];
