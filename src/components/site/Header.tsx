@@ -114,12 +114,14 @@ export function Header() {
                   </button>
                 </>
               ) : (
-                <Link
-                  to="/auth"
+                <a
+                  href="https://forms.gle/4u9dTKbaL3EcTpNN7"
+                  target="_blank"
+                  rel="noreferrer"
                   className="inline-flex items-center rounded-xl bg-ink px-4 py-2 text-sm font-semibold text-primary-foreground shadow-md transition-colors hover:bg-ink/90"
                 >
                   تسجيل الدخول
-                </Link>
+                </a>
               )}
               <button
                 onClick={() => setOpen((v) => !v)}

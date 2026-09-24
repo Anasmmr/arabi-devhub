@@ -261,15 +261,7 @@ function DepartmentPage() {
                     <ExternalLink className="size-4" />
                     ابدأ على سطر
                   </a>
-                  {!user ? (
-                    <Link
-                      to="/auth"
-                      className="inline-flex items-center gap-2 rounded-xl bg-ink px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary"
-                    >
-                      <Lock className="size-4" />
-                      سجّل الدخول لتسجيل الإكمال
-                    </Link>
-                  ) : done ? (
+                  {!user ? null : done ? (
                     <span className="inline-flex items-center gap-2 rounded-xl bg-success/15 px-4 py-2.5 text-sm font-semibold text-success">
                       <CheckCircle2 className="size-4" />
                       مكتملة
