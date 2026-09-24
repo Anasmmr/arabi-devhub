@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { Award, CheckCircle2, ExternalLink, Lock, Sparkles, Trophy } from "lucide-react";
+import { Award, CheckCircle2, ExternalLink, Sparkles, Trophy } from "lucide-react";
 import { toast } from "sonner";
 import { getDepartment } from "@/lib/community.functions";
 import { completeCourse } from "@/lib/me.functions";
@@ -261,15 +261,7 @@ function DepartmentPage() {
                     <ExternalLink className="size-4" />
                     ابدأ على سطر
                   </a>
-                  {!user ? (
-                    <Link
-                      to="/auth"
-                      className="inline-flex items-center gap-2 rounded-xl bg-ink px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary"
-                    >
-                      <Lock className="size-4" />
-                      سجّل الدخول لتسجيل الإكمال
-                    </Link>
-                  ) : done ? (
+                  {!user ? null : done ? (
                     <span className="inline-flex items-center gap-2 rounded-xl bg-success/15 px-4 py-2.5 text-sm font-semibold text-success">
                       <CheckCircle2 className="size-4" />
                       مكتملة
