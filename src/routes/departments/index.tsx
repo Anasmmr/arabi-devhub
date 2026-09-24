@@ -93,6 +93,9 @@ function Departments() {
                 <p className="font-num mt-1 text-sm font-bold text-primary">
                   مجموع مسار تصميم الواجهات عند الإتمام 300 نقطة
                 </p>
+                <p className="font-num mt-1 text-sm font-bold text-primary">
+                  مجموع مسار الذكاء الاصطناعي عند الإتمام 1145 نقطة
+                </p>
               </div>
             </div>
           </div>
