@@ -227,20 +227,11 @@ function DepartmentPage() {
             const done = doneIds.has(c.id);
             return (
               <article key={c.id} className="glass rounded-2xl p-5 shadow-glass">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0">
-                    <p className="font-num text-[11px] font-semibold text-muted-foreground">
-                      الدورة {arabicNumber(i + 1)}
-                    </p>
-                    <h3 className="mt-1 text-base font-bold text-foreground">{c.title_ar}</h3>
-                  </div>
-                  <span
-                    className={`font-num shrink-0 rounded-lg px-2.5 py-1 text-xs font-bold ${
-                      done ? "bg-success/15 text-success" : "bg-primary/10 text-primary"
-                    }`}
-                  >
-                    {arabicNumber(c.points)} نقطة
-                  </span>
+                <div className="min-w-0">
+                  <p className="font-num text-[11px] font-semibold text-muted-foreground">
+                    الدورة {arabicNumber(i + 1)}
+                  </p>
+                  <h3 className="mt-1 text-base font-bold text-foreground">{c.title_ar}</h3>
                 </div>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {c.description_ar}
