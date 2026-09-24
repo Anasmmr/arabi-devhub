@@ -7,7 +7,7 @@ export const socials = [
   { label: "إنستغرام", handle: "@gdgoc.uom", href: "https://www.instagram.com/gdgoc.uom", icon: Instagram },
   { label: "لينكد إن", handle: "GDG on Campus Mustaqbal University", href: "https://www.linkedin.com/company/gdgoc-uom", icon: Linkedin },
   { label: "صفحتنا الرسمية", handle: "منصة قوقل للمطورين", href: "https://gdg.community.dev/gdg-on-campus-mustaqbal-university/", icon: Users },
-  { label: "موقعنا الرسمي", handle: "gdg-uom.me", href: "https://gdg-uom.me", icon: Globe },
+  { label: "موقعنا الرسمي", handle: "gdg-uom.xyz", href: "https://gdg-uom.xyz", icon: Globe },
 ] as const;
 
 function TikTokIcon({ className }: { className?: string }) {
