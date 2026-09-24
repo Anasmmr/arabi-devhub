@@ -85,7 +85,7 @@ function Departments() {
                 <p className="text-xs font-semibold text-foreground">مثال من الواجهة:</p>
                 <p className="mt-1 text-sm text-muted-foreground">مسار أساسيات الأمن السيبراني</p>
                 <p className="font-num mt-1 text-sm font-bold text-primary">
-                  مجموع مسار الأمن السيبراني عند الإتمام 680 نقطة
+                  مجموع مسار الأمن السيبراني عند الإتمام 4050 نقطة
                 </p>
               </div>
             </div>
