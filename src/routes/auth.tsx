@@ -130,7 +130,7 @@ function AuthPage() {
               rel="noreferrer"
               className="mt-5 block w-full text-center text-sm font-semibold text-primary hover:underline"
             >
-              ليس لديك حساب؟ سجّل عبر الفورم
+              ليس لديك حساب؟ إنشاء حساب
             </a>
           </div>
         </div>
