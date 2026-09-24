@@ -17,6 +17,13 @@ import { deptImage } from "@/lib/deptImages";
 import { deptPath } from "@/lib/deptPaths";
 import { accentStyle, arabicNumber } from "@/lib/dept";
 
+const pathwayPoints: Record<string, number> = {
+  ai: 1145,
+  app: 2745,
+  security: 4050,
+  uiux: 300,
+};
+
 export const Route = createFileRoute("/departments/")({
   loader: () => getDepartments(),
   head: () => ({
@@ -85,16 +92,7 @@ function Departments() {
                 <p className="text-xs font-semibold text-foreground">مثال من الواجهة:</p>
                 <p className="mt-1 text-sm text-muted-foreground">مسار أساسيات الأمن السيبراني</p>
                 <p className="font-num mt-1 text-sm font-bold text-primary">
-                  مجموع مسار الأمن السيبراني عند الإتمام 4050 نقطة
-                </p>
-                <p className="font-num mt-1 text-sm font-bold text-primary">
-                  مجموع مسار تطوير التطبيقات عند الإتمام 2745 نقطة
-                </p>
-                <p className="font-num mt-1 text-sm font-bold text-primary">
-                  مجموع مسار تصميم الواجهات عند الإتمام 300 نقطة
-                </p>
-                <p className="font-num mt-1 text-sm font-bold text-primary">
-                  مجموع مسار الذكاء الاصطناعي عند الإتمام 1145 نقطة
+                  مثال: لكل دورة عدد نقاط محدد يُضاف عند إتمامها.
                 </p>
               </div>
             </div>
@@ -160,6 +158,9 @@ function Departments() {
                   </div>
                   <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
                     {d.short_description_ar}
+                  </p>
+                  <p className={`font-num mt-4 text-sm font-bold ${a.text}`}>
+                    مجموع نقاط المسار عند الإتمام: {arabicNumber(pathwayPoints[d.slug] ?? 0)} نقطة
                   </p>
                   <div className="mt-5 flex items-center justify-between gap-3">
                     <span className="font-num inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
