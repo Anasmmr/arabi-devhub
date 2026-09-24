@@ -1,7 +1,7 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { Award, CheckCircle2, ExternalLink, Sparkles, Trophy } from "lucide-react";
+import { Award, CheckCircle2, ExternalLink, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { getDepartment } from "@/lib/community.functions";
 import { completeCourse } from "@/lib/me.functions";
@@ -113,7 +113,7 @@ function DepartmentPage() {
             <p className="mt-5 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
               {department.intro_ar}
             </p>
-            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
               <div className="glass-soft rounded-2xl p-4">
                 <p className="text-xs text-muted-foreground">دورات المسار</p>
                 <p className="font-num mt-1 text-xl font-bold text-foreground">
@@ -124,12 +124,6 @@ function DepartmentPage() {
                 <p className="text-xs text-muted-foreground">أكملت</p>
                 <p className="font-num mt-1 text-xl font-bold text-foreground">
                   {arabicNumber(completedCount)}
-                </p>
-              </div>
-              <div className="glass-soft rounded-2xl p-4">
-                <p className="text-xs text-muted-foreground">نقاط المسار</p>
-                <p className="font-num mt-1 text-xl font-bold text-primary">
-                  {arabicNumber(progress?.points ?? 0)}
                 </p>
               </div>
             </div>
@@ -285,50 +279,27 @@ function DepartmentPage() {
 
       {/* Certificates + points */}
       <Section>
-        <div className="grid gap-4 lg:grid-cols-2">
-          <div className="glass rounded-2xl p-6 shadow-glass">
-            <div className="flex items-center gap-2">
-              <Award className="size-5 text-primary" />
-              <h2 className="text-lg font-bold text-foreground">شهادات هذا المسار</h2>
-            </div>
-            {certificates.length === 0 ? (
-              <p className="mt-4 text-sm text-muted-foreground">
-                لا توجد شهادات بعد — أكمل أول دورة في المسار لتصدر شهادتك تلقائيًا.
-              </p>
-            ) : (
-              <ul className="mt-4 space-y-2.5">
-                {certificates.map((cert) => (
-                  <li key={cert.id} className="glass-soft rounded-xl p-4">
-                    <p className="text-sm font-semibold text-foreground">{cert.course_title}</p>
-                    <p className="font-num mt-1 text-xs text-muted-foreground">
-                      {cert.serial} · {arabicDate(cert.issued_at)}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            )}
+        <div className="glass rounded-2xl p-6 shadow-glass">
+          <div className="flex items-center gap-2">
+            <Award className="size-5 text-primary" />
+            <h2 className="text-lg font-bold text-foreground">شهادات هذا المسار</h2>
           </div>
-
-          <div className="glass rounded-2xl p-6 shadow-glass">
-            <div className="flex items-center gap-2">
-              <Trophy className="size-5 text-gold" />
-              <h2 className="text-lg font-bold text-foreground">نقاطك من المسار</h2>
-            </div>
-            <p className="font-num mt-4 text-4xl font-bold text-primary">
-              {arabicNumber(progress?.points ?? 0)}
+          {certificates.length === 0 ? (
+            <p className="mt-4 text-sm text-muted-foreground">
+              لا توجد شهادات بعد — أكمل أول دورة في المسار لتصدر شهادتك تلقائيًا.
             </p>
-            <p className="mt-2 text-sm text-muted-foreground">
-              {user
-                ? `أكملت ${arabicNumber(completedCount)} من ${arabicNumber(department.courses.length)} دورة في هذا المسار.`
-                : "سجّل الدخول لعرض نقاطك وتقدّمك في هذا المسار."}
-            </p>
-            <Link
-              to="/profile"
-              className="mt-5 inline-flex items-center gap-2 rounded-xl bg-ink px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary"
-            >
-              لوحة حسابي
-            </Link>
-          </div>
+          ) : (
+            <ul className="mt-4 space-y-2.5">
+              {certificates.map((cert) => (
+                <li key={cert.id} className="glass-soft rounded-xl p-4">
+                  <p className="text-sm font-semibold text-foreground">{cert.course_title}</p>
+                  <p className="font-num mt-1 text-xs text-muted-foreground">
+                    {cert.serial} · {arabicDate(cert.issued_at)}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </Section>
     </main>
