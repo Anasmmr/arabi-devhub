@@ -87,6 +87,9 @@ function Departments() {
                 <p className="font-num mt-1 text-sm font-bold text-primary">
                   مجموع مسار الأمن السيبراني عند الإتمام 4050 نقطة
                 </p>
+                <p className="font-num mt-1 text-sm font-bold text-primary">
+                  مجموع مسار تطوير التطبيقات عند الإتمام 2745 نقطة
+                </p>
               </div>
             </div>
           </div>
