@@ -49,8 +49,8 @@ export function Header() {
     <>
       <header className="sticky top-0 z-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="glass mt-4 flex items-center justify-between gap-4 rounded-2xl px-4 py-3 shadow-glass sm:px-5">
-            <Link to="/" className="flex items-center gap-2.5">
+          <div className="glass mt-4 flex items-center justify-between gap-3 rounded-2xl px-4 py-3 shadow-glass sm:gap-4 sm:px-5">
+            <Link to="/" className="flex min-w-0 items-center gap-2.5">
               <img
                 src={logoAsset.url}
                 alt="Google Developer"
@@ -58,11 +58,11 @@ export function Header() {
                 height={36}
                 className="size-9 shrink-0 rounded-xl object-contain"
               />
-              <span className="leading-tight">
-                <span className="block text-[15px] font-bold text-foreground">
+              <span className="min-w-0 leading-tight">
+                <span className="block truncate text-[15px] font-bold text-foreground">
                   Google Developer
                 </span>
-                <span className="block text-[11px] text-muted-foreground">مجتمع المطورين</span>
+                <span className="block truncate text-[11px] text-muted-foreground">مجتمع المطورين</span>
               </span>
             </Link>
 
@@ -86,7 +86,7 @@ export function Header() {
               })}
             </nav>
 
-            <div className="flex items-center gap-2">
+            <div className="flex shrink-0 items-center gap-2">
               {user ? (
                 <>
                   {roles?.isAdmin && (
