@@ -4,7 +4,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { ShieldCheck, ShieldOff, ShieldPlus, Star } from "lucide-react";
 import { toast } from "sonner";
-import { getMyRoles, grantModeratorByEmail, listMembers, setMemberRole } from "@/lib/admin.functions";
+import { createModeratorAccount, getMyRoles, listMembers, setMemberRole } from "@/lib/admin.functions";
 import { useSession } from "@/hooks/useSession";
 import { Section } from "@/components/site/Bits";
 import { arabicNumber } from "@/lib/dept";
@@ -60,17 +60,15 @@ function AdminPage() {
   });
 
   const [email, setEmail] = useState("");
-  const grantByEmail = useServerFn(grantModeratorByEmail);
+  const [tempPassword, setTempPassword] = useState<string | null>(null);
+  const createMod = useServerFn(createModeratorAccount);
   const grantMutation = useMutation({
-    mutationFn: (value: string) => grantByEmail({ data: { email: value } }),
+    mutationFn: (value: string) => createMod({ data: { email: value } }),
     onSuccess: (res) => {
-      if (!res.ok) {
-        toast.error("ما فيه حساب بهذا البريد. لازم يسجّل دخول مرة أولًا.");
-        return;
-      }
       setEmail("");
+      setTempPassword(res.tempPassword);
       queryClient.invalidateQueries({ queryKey: ["admin-members"] });
-      toast.success("تمت إضافته كمشرف.");
+      toast.success(res.created ? "تم إنشاء حساب المشرف." : "تمت إضافته كمشرف.");
     },
     onError: () => toast.error("تعذّرت الإضافة، تأكد من البريد."),
   });
@@ -136,8 +134,18 @@ function AdminPage() {
         >
           <h2 className="text-base font-bold text-foreground">إضافة مشرف بالبريد</h2>
           <p className="mt-1 text-xs text-muted-foreground">
-            المشرف يقدر يعدّل نقاط المسارات في لوحة الصدارة.
+            اكتب بريد الشخص ويُنشأ حسابه فورًا — يسجّل دخول مباشرة بالبريد والرمز المؤقت، ويغيّر الرمز
+            بعدها من صفحته. المشرف يقدر يعدّل نقاط المسارات في لوحة الصدارة.
           </p>
+          {tempPassword && (
+            <p className="mt-3 rounded-xl bg-primary/10 px-3 py-2.5 text-sm font-semibold text-foreground">
+              الرمز المؤقت للمشرف الجديد:{" "}
+              <span className="font-num select-all text-primary" dir="ltr">
+                {tempPassword}
+              </span>{" "}
+              — انسخه وأرسله له.
+            </p>
+          )}
           <div className="mt-3 flex flex-col gap-2 sm:flex-row">
             <input
               type="email"
