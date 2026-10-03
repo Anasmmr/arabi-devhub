@@ -148,7 +148,18 @@ export function Header() {
                   </Link>
                 );
               })}
+              {roles?.isAdmin && (
+                <Link
+                  to="/admin"
+                  onClick={() => setOpen(false)}
+                  className="mt-1 flex items-center gap-2 rounded-xl border-t border-primary-foreground/15 px-4 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10"
+                >
+                  <ShieldCheck className="size-4" />
+                  التسجيل للقادة
+                </Link>
+              )}
             </div>
+
           )}
         </div>
       </header>
