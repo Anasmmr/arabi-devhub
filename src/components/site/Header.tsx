@@ -134,7 +134,7 @@ export function Header() {
           </div>
 
           {open && (
-            <div className="glass reveal mt-2 rounded-2xl p-2 shadow-glass lg:hidden">
+            <div className="reveal mt-2 rounded-2xl bg-ink p-2 shadow-glass-lg lg:hidden">
               {links.map((l) => {
                 if (!l) return null;
                 return (
@@ -142,7 +142,7 @@ export function Header() {
                     key={l.to}
                     to={l.to}
                     onClick={() => setOpen(false)}
-                    className="block rounded-xl px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-primary/10 hover:text-primary"
+                    className="block rounded-xl px-4 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-foreground/10"
                   >
                     {l.label}
                   </Link>
