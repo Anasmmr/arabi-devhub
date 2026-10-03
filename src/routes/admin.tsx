@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { ShieldCheck, ShieldOff, ShieldPlus, Star } from "lucide-react";
 import { toast } from "sonner";
-import { getMyRoles, listMembers, setMemberRole } from "@/lib/admin.functions";
+import { getMyRoles, grantModeratorByEmail, listMembers, setMemberRole } from "@/lib/admin.functions";
 import { useSession } from "@/hooks/useSession";
 import { Section } from "@/components/site/Bits";
 import { arabicNumber } from "@/lib/dept";
@@ -58,6 +59,22 @@ function AdminPage() {
     onError: () => toast.error("تعذّر تغيير الصلاحية."),
   });
 
+  const [email, setEmail] = useState("");
+  const grantByEmail = useServerFn(grantModeratorByEmail);
+  const grantMutation = useMutation({
+    mutationFn: (value: string) => grantByEmail({ data: { email: value } }),
+    onSuccess: (res) => {
+      if (!res.ok) {
+        toast.error("ما فيه حساب بهذا البريد. لازم يسجّل دخول مرة أولًا.");
+        return;
+      }
+      setEmail("");
+      queryClient.invalidateQueries({ queryKey: ["admin-members"] });
+      toast.success("تمت إضافته كمشرف.");
+    },
+    onError: () => toast.error("تعذّرت الإضافة، تأكد من البريد."),
+  });
+
   if (loading || (user && rolesQuery.isLoading)) {
     return (
       <main>
@@ -108,6 +125,39 @@ function AdminPage() {
           امنح أي عضو صلاحية <strong>الإشراف</strong> لمساعدتك في إدارة المجتمع، أو صلاحية{" "}
           <strong>الإدارة</strong> الكاملة. يمكنك سحب الصلاحية في أي وقت.
         </p>
+
+        <form
+          className="glass mt-6 max-w-xl rounded-2xl p-5 shadow-glass"
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (!email.trim()) return;
+            grantMutation.mutate(email.trim());
+          }}
+        >
+          <h2 className="text-base font-bold text-foreground">إضافة مشرف بالبريد</h2>
+          <p className="mt-1 text-xs text-muted-foreground">
+            المشرف يقدر يعدّل نقاط المسارات في لوحة الصدارة.
+          </p>
+          <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+            <input
+              type="email"
+              dir="ltr"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="البريد الإلكتروني"
+              aria-label="بريد العضو"
+              className="flex-1 rounded-xl bg-glass px-3 py-2.5 text-sm text-foreground outline-none ring-1 ring-border focus:ring-primary"
+            />
+            <button
+              type="submit"
+              disabled={grantMutation.isPending}
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-ink px-4 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary disabled:opacity-60"
+            >
+              <ShieldPlus className="size-4" />
+              إضافة كمشرف
+            </button>
+          </div>
+        </form>
 
         {membersQuery.isLoading ? (
           <p className="mt-8 text-sm text-muted-foreground">جارٍ تحميل الأعضاء…</p>

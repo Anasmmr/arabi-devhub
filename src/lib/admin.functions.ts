@@ -55,6 +55,40 @@ export const listMembers = createServerFn({ method: "GET" })
     };
   });
 
+/** Admin-only: grant moderator to a member by email. */
+export const grantModeratorByEmail = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((data) => z.object({ email: z.string().trim().email().max(255) }).parse(data))
+  .handler(async ({ context, data }) => {
+    const { data: adminRow } = await context.supabase
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", context.userId)
+      .eq("role", "admin")
+      .maybeSingle();
+    if (!adminRow) throw new Error("not_authorized");
+
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const target = data.email.toLowerCase();
+    let found: string | null = null;
+    for (let page = 1; page <= 10 && !found; page++) {
+      const { data: res, error } = await supabaseAdmin.auth.admin.listUsers({ page, perPage: 200 });
+      if (error) throw new Error(error.message);
+      const u = res.users.find((x) => (x.email ?? "").toLowerCase() === target);
+      if (u) found = u.id;
+      if (res.users.length < 200) break;
+    }
+    if (!found) return { ok: false as const, reason: "not_found" as const };
+
+    const { error } = await context.supabase.rpc("set_user_role", {
+      _user_id: found,
+      _role: "moderator",
+      _grant: true,
+    });
+    if (error) throw new Error(error.message);
+    return { ok: true as const };
+  });
+
 /** Admin-only: grant or revoke a role for a member. */
 export const setMemberRole = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
