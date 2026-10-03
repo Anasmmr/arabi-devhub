@@ -49,8 +49,8 @@ export function Header() {
     <>
       <header className="sticky top-0 z-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="glass mt-4 flex items-center justify-between gap-4 rounded-2xl px-4 py-3 shadow-glass sm:px-5">
-            <Link to="/" className="flex items-center gap-2.5">
+          <div className="glass mt-4 flex items-center justify-between gap-2 rounded-2xl px-3.5 py-3 shadow-glass sm:gap-4 sm:px-5">
+            <Link to="/" className="flex min-w-0 items-center gap-2">
               <img
                 src={logoAsset.url}
                 alt="Google Developer"
@@ -58,11 +58,11 @@ export function Header() {
                 height={36}
                 className="size-9 shrink-0 rounded-xl object-contain"
               />
-              <span className="leading-tight">
-                <span className="block text-[15px] font-bold text-foreground">
+              <span className="hidden min-w-0 leading-tight min-[372px]:block">
+                <span className="block truncate text-[15px] font-bold text-foreground">
                   Google Developer
                 </span>
-                <span className="block text-[11px] text-muted-foreground">مجتمع المطورين</span>
+                <span className="block truncate text-[11px] text-muted-foreground">مجتمع المطورين</span>
               </span>
             </Link>
 
@@ -86,7 +86,7 @@ export function Header() {
               })}
             </nav>
 
-            <div className="flex items-center gap-2">
+            <div className="flex shrink-0 items-center gap-1.5">
               {user ? (
                 <>
                   {roles?.isAdmin && (
@@ -118,7 +118,7 @@ export function Header() {
                   href="https://forms.gle/4u9dTKbaL3EcTpNN7"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center rounded-xl bg-ink px-4 py-2 text-sm font-semibold text-primary-foreground shadow-md transition-colors hover:bg-ink/90"
+                  className="inline-flex shrink-0 items-center whitespace-nowrap rounded-xl bg-ink px-2.5 py-2 text-[13px] font-semibold text-primary-foreground shadow-md transition-colors hover:bg-ink/90 sm:px-4 sm:text-sm"
                 >
                   تسجيل الدخول
                 </a>
@@ -126,7 +126,7 @@ export function Header() {
               <button
                 onClick={() => setOpen((v) => !v)}
                 aria-label="القائمة"
-                className="glass-soft grid size-9 place-items-center rounded-xl text-foreground lg:hidden"
+                className="glass-soft grid size-8 place-items-center rounded-xl text-foreground lg:hidden sm:size-9"
               >
                 {open ? <X className="size-4" /> : <Menu className="size-4" />}
               </button>
