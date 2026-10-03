@@ -2,10 +2,10 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { Plus } from "lucide-react";
+import { Pencil, Plus } from "lucide-react";
 import { toast } from "sonner";
 import { getDepartments } from "@/lib/community.functions";
-import { addDepartmentPoints, getDepartmentScores } from "@/lib/members.functions";
+import { addDepartmentPoints, getDepartmentScores, setDepartmentTotal } from "@/lib/members.functions";
 import { getMyRoles } from "@/lib/admin.functions";
 import { useSession } from "@/hooks/useSession";
 import { Section, SectionHead } from "@/components/site/Bits";
@@ -40,6 +40,7 @@ function Leaderboard() {
   const fetchScores = useServerFn(getDepartmentScores);
   const fetchRoles = useServerFn(getMyRoles);
   const addPoints = useServerFn(addDepartmentPoints);
+  const setTotal = useServerFn(setDepartmentTotal);
 
   const scoresQuery = useQuery({ queryKey: ["dept-scores"], queryFn: () => fetchScores() });
   const rolesQuery = useQuery({
@@ -64,6 +65,17 @@ function Leaderboard() {
     onError: () => toast.error("تعذّرت إضافة النقاط."),
   });
 
+  const [totals, setTotals] = useState<Record<string, string>>({});
+  const totalMutation = useMutation({
+    mutationFn: (vars: { departmentId: string; total: number }) => setTotal({ data: vars }),
+    onSuccess: (_r, vars) => {
+      setTotals((t) => ({ ...t, [vars.departmentId]: "" }));
+      queryClient.invalidateQueries({ queryKey: ["dept-scores"] });
+      toast.success("تم تعديل نقاط المسار.");
+    },
+    onError: () => toast.error("تعذّر تعديل النقاط."),
+  });
+
   const scores = scoresQuery.data?.scores ?? {};
 
   return (
@@ -73,7 +85,7 @@ function Leaderboard() {
 
         {canAward && (
           <p className="mt-4 text-sm text-muted-foreground">
-            بصفتك مشرفاً يمكنك إضافة النقاط لكل مسار من الخانة أسفل بطاقته.
+            بصفتك مسؤولاً يمكنك إضافة النقاط أو تعديل مجموعها من أسفل بطاقة كل مسار.
           </p>
         )}
 
@@ -147,6 +159,41 @@ function Leaderboard() {
                       >
                         <Plus className="size-4" />
                         إضافة نقاط
+                      </button>
+                    </form>
+                  )}
+
+                  {canAward && (
+                    <form
+                      className="mt-4 w-full space-y-2 border-t border-border pt-4"
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        const value = Number(totals[d.id]);
+                        if (totals[d.id] === undefined || totals[d.id] === "" || !Number.isFinite(value) || value < 0) {
+                          toast.error("اكتب المجموع الجديد بشكل صحيح.");
+                          return;
+                        }
+                        totalMutation.mutate({ departmentId: d.id, total: Math.trunc(value) });
+                      }}
+                    >
+                      <p className="text-xs font-semibold text-foreground">تعديل النقاط</p>
+                      <input
+                        type="number"
+                        inputMode="numeric"
+                        min={0}
+                        value={totals[d.id] ?? ""}
+                        onChange={(e) => setTotals((s) => ({ ...s, [d.id]: e.target.value }))}
+                        placeholder="المجموع الجديد"
+                        aria-label={`المجموع الجديد لمسار ${d.name_ar}`}
+                        className="font-num w-full rounded-xl bg-glass px-3 py-2.5 text-center text-sm text-foreground outline-none ring-1 ring-border focus:ring-primary"
+                      />
+                      <button
+                        type="submit"
+                        disabled={totalMutation.isPending}
+                        className="glass-soft inline-flex w-full items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-primary/10 disabled:opacity-60"
+                      >
+                        <Pencil className="size-4" />
+                        حفظ التعديل
                       </button>
                     </form>
                   )}
