@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowLeft,
   Award,
-  BookOpen,
   Gamepad2,
   Medal,
   Share2,
@@ -14,7 +13,6 @@ import { getDepartments } from "@/lib/community.functions";
 import { Section, SectionHead } from "@/components/site/Bits";
 import { DeptIcon } from "@/components/site/DeptIcon";
 import { deptImage } from "@/lib/deptImages";
-import { deptPath } from "@/lib/deptPaths";
 import { accentStyle, arabicNumber } from "@/lib/dept";
 
 const pathwayPoints: Record<string, number> = {
@@ -162,18 +160,7 @@ function Departments() {
                   <p className={`font-num mt-4 text-sm font-bold ${a.text}`}>
                     مجموع نقاط المسار عند الإتمام: {arabicNumber(pathwayPoints[d.slug] ?? 0)} نقطة
                   </p>
-                  <div className="mt-5 flex items-center justify-between gap-3">
-                    <span className="font-num inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
-                      <BookOpen className="size-4" />
-                      {(() => {
-                        const n = deptPath(d.slug).length;
-                        return n === 1
-                          ? "دورة واحدة"
-                          : n === 2
-                            ? "دورتان"
-                            : `${arabicNumber(n)} دورات`;
-                      })()}
-                    </span>
+                  <div className="mt-5 flex justify-end">
                     <Link
                       to="/departments/$slug"
                       params={{ slug: d.slug }}
